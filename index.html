@@ -3,22 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maths FS Revision</title>
+  <title>Maths FS Practice</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/icons/icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <meta name="theme-color" content="#003057" />
   <link rel="stylesheet" href="src/renderer/styles/main.css" />
   <link rel="stylesheet" href="src/renderer/styles/print.css" media="print" />
 </head>
 <body>
   <div id="player" class="player">
+    <!-- Title bar.
+         • On macOS the real OS traffic-light buttons are rendered by the
+           Electron `titleBarStyle: 'hiddenInset'` setting, overlaying the
+           top-left of this bar. CSS leaves space for them and hides the
+           fake .tb-ctl Windows-style controls.
+         • On Windows (frameless) the .tb-ctl strip is shown and wired up
+           to IPC by app.js.
+         • In the browser (Chromebook PWA), the browser/Chrome OS chrome
+           handles everything; CSS hides both fake control sets. -->
     <div class="player-titlebar">
-      <span class="tb-dot tb-dot-r"></span>
-      <span class="tb-dot tb-dot-y"></span>
-      <span class="tb-dot tb-dot-g"></span>
-      <span class="tb-title">Test Player Preview &mdash; Maths FS</span>
+      <span class="tb-mac-pad" aria-hidden="true"></span>
+      <span class="tb-title">Maths FS Practice &mdash; Test Player Preview</span>
       <span class="tb-spacer"></span>
       <span class="tb-board" id="tb-board-label">Edexcel</span>
-      <span class="tb-ctl tb-min">&minus;</span>
-      <span class="tb-ctl tb-max">&#9633;</span>
-      <span class="tb-ctl tb-close">&times;</span>
+      <span class="tb-ctl tb-min" title="Minimise" aria-label="Minimise">&minus;</span>
+      <span class="tb-ctl tb-max" title="Maximise" aria-label="Maximise">&#9633;</span>
+      <span class="tb-ctl tb-close" title="Close" aria-label="Close">&times;</span>
     </div>
 
     <div id="screen" class="screen"></div>

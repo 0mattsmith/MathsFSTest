@@ -1,0 +1,66 @@
+# Deploy the web app to GitHub Pages on every push to main.
+# Once enabled (Settings → Pages → Build and deployment → Source: GitHub
+# Actions), the app will be served from
+#   https://0mattsmith.github.io/MathsFSTest/
+#
+# Students can bookmark that URL or, on Chromebooks, hit the "Install"
+# button in the Chrome omnibox to install it as a PWA with its own
+# shelf icon.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Smoke test before deploy
+        run: node smoke.test.mjs
+
+      - name: Stage site
+        # The app is already a static site. We just copy the runtime
+        # files (skipping things only used for the Electron/desktop build).
+        run: |
+          mkdir _site
+          cp -r index.html assets src _site/
+          cp manifest.webmanifest sw.js _site/ 2>/dev/null || true
+          # GitHub Pages serves from the repo subpath; the SW needs a
+          # scope-aware URL, so write a tiny config the front-end can read.
+          cat > _site/site-config.js <<'EOF'
+          window.__SITE = { hosted: true, repoPath: '/MathsFSTest/' };
+          EOF
+          echo "Site contents:" && ls -la _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

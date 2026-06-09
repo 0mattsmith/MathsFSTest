@@ -105,7 +105,69 @@ window.addEventListener('DOMContentLoaded', () => {
   const tbBoard = document.getElementById('tb-board-label');
   if (tbBoard) tbBoard.textContent = state.board === 'edexcel' ? 'Edexcel' : state.board;
 
+  // Platform detection — drives which window controls to show.
+  applyPlatformChrome();
+
+  // Register the PWA service worker so the app is installable + works
+  // offline on Chromebooks. Only when we're served over http(s); in
+  // Electron (file://) we skip this.
+  if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
+    navigator.serviceWorker.register('sw.js').catch(() => { /* non-fatal */ });
+  }
+
   api.go('home');
 });
+
+// Platform-aware title-bar chrome.
+//
+// In Electron the preload exposes `window.mfs.platform`. On macOS we add
+// `body.is-mac` so the real OS traffic lights are visible (drawn by
+// `titleBarStyle: 'hiddenInset'`) and our fake Windows-style strip is
+// hidden. On Windows we add `body.is-windows`, leave the fake strip
+// visible and wire each button to its IPC handler. In a browser we add
+// `body.is-browser` so neither set of fake controls shows.
+//
+// We also wire double-click on the title bar to toggle maximise — on
+// macOS the OS gives us this for free, so we only need to do it
+// explicitly on Windows.
+function applyPlatformChrome() {
+  const isElectron = !!(window.mfs && window.mfs.platform);
+  const platform = isElectron ? window.mfs.platform : 'browser';
+  document.body.classList.remove('is-mac', 'is-windows', 'is-browser');
+  if (platform === 'darwin')      document.body.classList.add('is-mac');
+  else if (platform === 'win32')  document.body.classList.add('is-windows');
+  else                            document.body.classList.add('is-browser');
+
+  // On Windows wire the fake min/max/close strip to the Electron IPC.
+  if (platform === 'win32' && window.mfs && window.mfs.window) {
+    const w = window.mfs.window;
+    const min = document.querySelector('.tb-min');
+    const max = document.querySelector('.tb-max');
+    const cls = document.querySelector('.tb-close');
+    if (min) min.addEventListener('click', () => w.minimize());
+    if (max) max.addEventListener('click', () => w.toggleMaximize());
+    if (cls) cls.addEventListener('click', () => w.close());
+
+    // Swap the max glyph between □ (will-maximize) and ❐ (will-restore).
+    function setMaxGlyph(isMax) {
+      if (!max) return;
+      max.innerHTML = isMax ? '&#10064;' : '&#9633;';
+      max.title = isMax ? 'Restore' : 'Maximise';
+    }
+    w.isMaximized().then(setMaxGlyph).catch(() => {});
+    w.onMaximizedChanged(setMaxGlyph);
+
+    // Double-click anywhere on the title bar (except on the buttons)
+    // toggles maximise — matches Windows convention.
+    const bar = document.querySelector('.player-titlebar');
+    if (bar) bar.addEventListener('dblclick', (e) => {
+      if (e.target.closest('.tb-ctl')) return;
+      w.toggleMaximize();
+    });
+  }
+  // (No extra wiring needed for macOS — the OS traffic lights handle
+  // minimise, zoom and close, and macOS already provides the
+  // "double-click the title bar to maximise" gesture.)
+}
 
 window.__mfs = { state, api, bridge };

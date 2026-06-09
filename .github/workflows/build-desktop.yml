@@ -1,0 +1,85 @@
+# Build Windows + macOS desktop apps on tag push.
+#
+# Trigger by tagging a release locally:
+#   git tag v0.1.0
+#   git push origin v0.1.0
+#
+# The job runs electron-builder on Windows and macOS GitHub-hosted
+# runners and attaches the resulting installers/portable .exe / .dmg
+# to a new GitHub Release.
+#
+# No code signing is configured — the binaries will trigger the
+# usual Gatekeeper / SmartScreen "unrecognised publisher" prompts the
+# first time they run, same as DigitalFSTest. Users click through
+# once and the prompt doesn't return.
+
+name: Build desktop apps
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            build_cmd: npm run build:win
+            artifact_glob: 'dist/*.exe'
+          - os: macos-latest
+            build_cmd: npm run build:mac
+            artifact_glob: 'dist/*.dmg'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Smoke test
+        run: node smoke.test.mjs
+        shell: bash
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: ${{ matrix.build_cmd }}
+        env:
+          # Skip code-signing on macOS — we don't have a certificate.
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.os }}
+          path: ${{ matrix.artifact_glob }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: List artifacts
+        run: ls -R artifacts
+
+      - name: Create GitHub Release and upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/desktop-windows-latest/*
+            artifacts/desktop-macos-latest/*
+          draft: false
+          generate_release_notes: true

@@ -10,9 +10,23 @@ export async function showQuickfire(api, state) {
   try { bank = await api.bridge.loadBank(state.level); }
   catch (e) { screen.appendChild(h('p', {}, 'Could not load bank: ' + e.message)); return; }
 
-  // Use only short, non-calculator questions for quickfire.
-  const pool = bank.questions.filter(q => !q.calc && q.marks <= 2);
-  if (!pool.length) { screen.appendChild(h('p', {}, 'No questions for this level.')); return; }
+  // Quickfire is a typing drill. MCQs only work if you also render the
+  // options, which breaks the rhythm — and stems like "Which is largest?"
+  // are nonsense without the choices visible. So we filter MCQs out.
+  // We also drop anything with tables / charts (can't render quickly) and
+  // anything with a fraction-only answer (hard to type fast).
+  const pool = bank.questions.filter(q =>
+    q.type !== 'mcq' &&
+    !q.table && !q.chart &&
+    !q.calc && q.marks <= 2);
+  if (!pool.length) {
+    screen.appendChild(h('div', { class: 'paper-wrap' },
+      h('div', { class: 'crumb', onClick: () => api.go('games') }, '◂ Games'),
+      h('h2', {}, 'Not enough quickfire-able questions at this level yet.'),
+      h('p', { class: 'muted' }, 'Try Flashcards instead — they handle every question type.'),
+      h('button', { class: 'orange-btn', onClick: () => api.go('flashcards') }, 'Open flashcards')));
+    return;
+  }
 
   const rng = makeRng(randomSeed());
   const order = shuffle(rng, pool);

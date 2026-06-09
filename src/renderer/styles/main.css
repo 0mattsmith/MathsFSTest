@@ -30,22 +30,27 @@ html, body {
   user-select: none;
   flex: 0 0 auto;
   font-size: 12px;
+  min-height: 32px;
+  /* In Electron, let the user drag the window by the title bar; the
+     interactive controls beneath opt back out via 'no-drag'. */
+  -webkit-app-region: drag;
 }
+.tb-title, .tb-board, .tb-ctl, .tb-spacer { -webkit-app-region: no-drag; }
 .tb-title {
   font-weight: 500;
   color: #333;
-  margin-left: 8px;
+  margin-left: 4px;
 }
-.tb-dot {
-  width: 12px; height: 12px;
-  border-radius: 50%;
+/* macOS reserves the leftmost ~78px for the real traffic-light buttons
+   (red/yellow/green), which Electron paints on top of our title bar
+   thanks to `titleBarStyle: 'hiddenInset'`. .tb-mac-pad is an invisible
+   spacer that only takes width on macOS, pushing our title clear of
+   them. On Windows and in the browser the pad collapses to zero. */
+.tb-mac-pad { display: none; }
+body.is-mac .tb-mac-pad {
   display: inline-block;
-  margin-right: 4px;
-  border: 1px solid rgba(0,0,0,0.2);
+  width: 70px;
 }
-.tb-dot-r { background: #ff6058; }
-.tb-dot-y { background: #ffbd2e; }
-.tb-dot-g { background: #28c941; }
 .tb-spacer { flex: 1; }
 .tb-board {
   background: #003057;
@@ -72,6 +77,16 @@ html, body {
 .tb-ctl:hover  { background: rgba(0,0,0,0.08); }
 .tb-ctl:active { background: rgba(0,0,0,0.16); }
 .tb-close:hover  { background: #d83b3b; color: white; }
+
+/* Window-control visibility by platform.
+   • macOS — the OS draws real traffic-light buttons, so hide the fake
+     Windows-style minimise/maximise/close strip entirely.
+   • Browser / PWA — the browser or Chrome OS handles window chrome;
+     don't show any fake controls.
+   • Windows (Electron, frameless) — show the fake strip; it's wired to
+     IPC by app.js. */
+body.is-mac .tb-ctl,
+body.is-browser .tb-ctl { display: none !important; }
 
 /* --- Screen container ------------------------------------------------ */
 .screen {

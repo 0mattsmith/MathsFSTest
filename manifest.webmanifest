@@ -1,0 +1,34 @@
+{
+  "name": "Maths FS Revision",
+  "short_name": "Maths FS",
+  "description": "Pearson Edexcel Functional Skills Mathematics revision app — mock papers, games and progress tracking for Entry Level 3, Level 1 and Level 2.",
+  "id": "/MathsFSTest/",
+  "scope": "./",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fdfaf3",
+  "theme_color": "#003057",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education"],
+  "lang": "en-GB"
+}

@@ -15,25 +15,72 @@ This project is a fork of [DigitalFSTest](https://github.com/0mattsmith/DigitalF
 - **Multi-board ready** — the question bank is keyed by `board` (`edexcel` for now), so packs for City & Guilds / AQA / NCFE can drop in later without code changes.
 - **Three levels** — Entry Level 3, Level 1, Level 2. Each has its own bank and paper template tuned to the real Edexcel spec (E3 ≈ 30 marks ÷ 75 min, L1 / L2 ≈ 65 marks ÷ 105 min, 25% non-calc / 75% calc).
 
-## Quick start
+## Running it
 
-The app is plain HTML/CSS/JS. To run it in development:
+The app ships three ways: a browser web app (best for Chromebooks), an Electron desktop app (best for teacher machines / no-internet rooms), and a GitHub Pages hosted version (so students just bookmark a URL).
+
+### 1. Run on macOS / any laptop right now
 
 ```bash
-cd MathsFSRevision
-node server.mjs           # static server on http://localhost:8080
-# or
-python3 -m http.server 8080
+git clone https://github.com/0mattsmith/MathsFSTest.git
+cd MathsFSTest
+npm install         # only needed for the desktop / Electron mode
 ```
 
-…then open http://localhost:8080 in any modern browser (Chrome, Edge, Safari, Firefox). Works on Chromebooks without installation.
-
-To run as an Electron desktop app (optional, for teacher machines):
+Browser mode (no install required after clone):
 
 ```bash
-npm install
+node server.mjs     # serves on http://localhost:8080
+```
+
+Desktop mode (Electron window with the "Test Player Preview" chrome):
+
+```bash
 npm run electron
 ```
+
+### 2. Build a Windows .exe (and macOS .dmg)
+
+Just **tag and push**. The GitHub Actions workflow at `.github/workflows/build-desktop.yml` builds both platforms on GitHub-hosted runners and attaches the binaries to a GitHub Release:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+A few minutes later, the Releases page on GitHub will have:
+
+- `MathsFSTest-Setup-x.y.z.exe` — Windows installer (NSIS)
+- `MathsFSTest-x.y.z-portable.exe` — Windows portable (no install)
+- `MathsFSTest-x.y.z.dmg` — macOS disk image
+
+The binaries are unsigned, so Windows SmartScreen and macOS Gatekeeper will warn the first time they run — click "More info → Run anyway" / Allow it from System Settings → Privacy & Security. After that they launch normally. Code signing requires paid Apple Developer ($99/yr) and EV code-signing certs ($300+/yr); not worth it for classroom use.
+
+You can also build locally without Actions:
+
+```bash
+npm run build:win-portable   # produces dist/*.exe
+npm run build:mac            # produces dist/*.dmg
+```
+
+### 3. Web version for Chromebooks — GitHub Pages + PWA
+
+The `.github/workflows/deploy-pages.yml` workflow auto-deploys the static site to GitHub Pages on every push to `main`. Students hit:
+
+> **https://0mattsmith.github.io/MathsFSTest/**
+
+…on any Chromebook, no install. From there:
+
+- **Bookmark it** and they're done.
+- **Or "Install" it as a PWA** — Chrome's omnibox shows an install icon (computer with a down-arrow). One click and the app gets a Chrome OS shelf icon, opens in its own window without browser chrome, and works offline thanks to the bundled service worker (`sw.js`). Updates flow automatically the next time a release is deployed.
+
+**One-time setup on GitHub** (after the first push to `main`):
+
+1. Go to **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. The next push will deploy. Watch the **Actions** tab to confirm.
+
+**Why not a Chrome Extension?** Extensions are for browser-modifying behaviour and require students to install something from the Chrome Web Store ($5/year developer fee + manual approval per extension version). A PWA on GitHub Pages is free, install-free for the "just bookmark it" path, optionally installable for offline use, and updates instantly when you push to `main`. There's no upside to packaging this as an extension.
 
 ## Tests
 
