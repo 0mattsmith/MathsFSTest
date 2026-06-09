@@ -1,0 +1,289 @@
+{
+  "board": "edexcel",
+  "level": "e3",
+  "templates": [
+    {
+      "id": "e3-tpl-add-2d", "topic": "n.add", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 23, "max": 89 },
+        { "name": "b", "type": "int", "min": 14, "max": 78 }
+      ],
+      "stem": "Work out {{a}} + {{b}}",
+      "answer": "{{a + b}}"
+    },
+    {
+      "id": "e3-tpl-add-3d", "topic": "n.add", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 124, "max": 587 },
+        { "name": "b", "type": "int", "min": 87,  "max": 342 }
+      ],
+      "stem": "Work out {{a}} + {{b}}",
+      "answer": "{{a + b}}"
+    },
+    {
+      "id": "e3-tpl-sub-3d", "topic": "n.add", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 320, "max": 890 },
+        { "name": "b", "type": "int", "min": 110, "max": 280 }
+      ],
+      "stem": "Work out {{a}} − {{b}}",
+      "answer": "{{a - b}}"
+    },
+    {
+      "id": "e3-tpl-mult-1d", "topic": "n.mult", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 3,  "max": 9 },
+        { "name": "b", "type": "int", "min": 4,  "max": 12 }
+      ],
+      "stem": "Work out {{a}} × {{b}}",
+      "answer": "{{a * b}}"
+    },
+    {
+      "id": "e3-tpl-mult-2d1d", "topic": "n.mult", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 13, "max": 49 },
+        { "name": "b", "type": "int", "min": 3,  "max": 9 }
+      ],
+      "stem": "Work out {{a}} × {{b}}",
+      "answer": "{{a * b}}"
+    },
+    {
+      "id": "e3-tpl-div-simple", "topic": "n.mult", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "b", "type": "int", "min": 3, "max": 9 },
+        { "name": "q", "type": "int", "min": 3, "max": 9 },
+        { "name": "a", "type": "expr", "expr": "b * q" }
+      ],
+      "stem": "Work out {{a}} ÷ {{b}}",
+      "answer": "{{q}}"
+    },
+    {
+      "id": "e3-tpl-dec-add", "topic": "n.dec", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "a10", "type": "int", "min": 12, "max": 89 },
+        { "name": "b10", "type": "int", "min": 9,  "max": 67 }
+      ],
+      "stem": "Work out {{a10/10}} + {{b10/10}}",
+      "answer": "{{(a10 + b10)/10}}"
+    },
+    {
+      "id": "e3-tpl-dec-sub", "topic": "n.dec", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "a10", "type": "int", "min": 35, "max": 99 },
+        { "name": "b10", "type": "int", "min": 8,  "max": 28 }
+      ],
+      "stem": "Work out {{a10/10}} − {{b10/10}}",
+      "answer": "{{(a10 - b10)/10}}"
+    },
+    {
+      "id": "e3-tpl-round-10", "topic": "n.dec", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "n", "type": "int", "min": 16, "max": 199 }
+      ],
+      "stem": "Round {{n}} to the nearest 10.",
+      "answer": "{{Math.round(n/10) * 10}}"
+    },
+    {
+      "id": "e3-tpl-round-100", "topic": "n.dec", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "n", "type": "int", "min": 124, "max": 987 }
+      ],
+      "stem": "Round {{n}} to the nearest 100.",
+      "answer": "{{Math.round(n/100) * 100}}"
+    },
+    {
+      "id": "e3-tpl-half-of", "topic": "n.frac", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "n2", "type": "int", "min": 6, "max": 50 },
+        { "name": "n",  "type": "expr", "expr": "n2 * 2" }
+      ],
+      "stem": "Work out one half of {{n}}",
+      "answer": "{{n2}}"
+    },
+    {
+      "id": "e3-tpl-quarter-of", "topic": "n.frac", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "n4", "type": "int", "min": 3, "max": 25 },
+        { "name": "n",  "type": "expr", "expr": "n4 * 4" }
+      ],
+      "stem": "Work out one quarter of {{n}}",
+      "answer": "{{n4}}"
+    },
+    {
+      "id": "e3-tpl-three-quarters", "topic": "n.frac", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "n4", "type": "int", "min": 4, "max": 25 },
+        { "name": "n",  "type": "expr", "expr": "n4 * 4" }
+      ],
+      "stem": "Work out three quarters of {{n}}",
+      "answer": "{{n4 * 3}}"
+    },
+    {
+      "id": "e3-tpl-money-items", "topic": "n.money", "strand": "number", "calc": true, "marks": 2, "type": "input-money",
+      "params": [
+        { "name": "name",  "type": "pick", "from": ["Sam","Lily","Ben","Aisha","Jamal","Maya","Theo","Ola"] },
+        { "name": "item1", "type": "pick", "from": ["sandwich","baguette","wrap","muffin","bagel"] },
+        { "name": "item2", "type": "pick", "from": ["drink","juice","tea","coffee","water"] },
+        { "name": "p1",    "type": "int", "min": 180, "max": 380, "step": 5 },
+        { "name": "p2",    "type": "int", "min": 90,  "max": 180, "step": 5 }
+      ],
+      "stem": "{{name}} buys a {{item1}} for {{money:p1}} and a {{item2}} for {{money:p2}}. How much does {{name}} spend in total?",
+      "answer": "{{(p1 + p2)/100}}",
+      "unit": "£"
+    },
+    {
+      "id": "e3-tpl-money-change", "topic": "n.money", "strand": "number", "calc": true, "marks": 2, "type": "input-money",
+      "params": [
+        { "name": "note",  "type": "pick", "from": [500, 1000, 2000] },
+        { "name": "p1",    "type": "int", "min": 195, "max": 470, "step": 5 },
+        { "name": "p2",    "type": "int", "min": 95,  "max": 230, "step": 5 }
+      ],
+      "stem": "Tom pays with a £{{note/100}} note. He buys items costing {{money:p1}} and {{money:p2}}. How much change does he get?",
+      "answer": "{{(note - p1 - p2)/100}}",
+      "unit": "£"
+    },
+    {
+      "id": "e3-tpl-money-multi", "topic": "n.money", "strand": "number", "calc": true, "marks": 2, "type": "input-money",
+      "params": [
+        { "name": "n",  "type": "int", "min": 2, "max": 6 },
+        { "name": "p",  "type": "int", "min": 60, "max": 195, "step": 5 },
+        { "name": "item", "type": "pick", "from": ["pen","apple","stamp","biscuit","sticker"] }
+      ],
+      "stem": "A {{item}} costs {{money:p}}. How much do {{n}} {{item}}s cost?",
+      "answer": "{{(n * p)/100}}",
+      "unit": "£"
+    },
+    {
+      "id": "e3-tpl-time-after", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "h",    "type": "int", "min": 8,  "max": 17 },
+        { "name": "m5",   "type": "int", "min": 0,  "max": 9 },
+        { "name": "addH", "type": "int", "min": 0,  "max": 2 },
+        { "name": "addM5","type": "int", "min": 2,  "max": 11 },
+        { "name": "startM", "type": "expr", "expr": "m5 * 5" },
+        { "name": "addM",   "type": "expr", "expr": "addM5 * 5" },
+        { "name": "tot",    "type": "expr", "expr": "h * 60 + startM + addH * 60 + addM" },
+        { "name": "endH",   "type": "expr", "expr": "Math.floor(tot / 60)" },
+        { "name": "endM",   "type": "expr", "expr": "tot - Math.floor(tot / 60) * 60" }
+      ],
+      "stem": "A meeting starts at {{h}}:{{startM < 10 ? '0' + startM : startM}} and lasts {{addH * 60 + addM}} minutes. What time does it finish? Use 24-hour format (HH:MM).",
+      "answer": "{{endH < 10 ? '0' + endH : endH}}:{{endM < 10 ? '0' + endM : endM}}"
+    },
+    {
+      "id": "e3-tpl-time-duration", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "startMin", "type": "int", "min": 540, "max": 750, "step": 5 },
+        { "name": "dur",      "type": "int", "min": 35, "max": 165, "step": 5 }
+      ],
+      "stem": "A train leaves at {{Math.floor(startMin/60)}}:{{startMin - Math.floor(startMin/60)*60 < 10 ? '0' + (startMin - Math.floor(startMin/60)*60) : (startMin - Math.floor(startMin/60)*60)}} and arrives {{dur}} minutes later. How many minutes is the journey?",
+      "answer": "{{dur}}",
+      "unit": "minutes"
+    },
+    {
+      "id": "e3-tpl-length-remaining", "topic": "m.length", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "total", "type": "int", "min": 120, "max": 350, "step": 10 },
+        { "name": "used",  "type": "int", "min": 35,  "max": 110, "step": 5 }
+      ],
+      "stem": "A piece of ribbon is {{total}} cm long. Jo cuts off {{used}} cm. How many centimetres are left?",
+      "answer": "{{total - used}}",
+      "unit": "cm"
+    },
+    {
+      "id": "e3-tpl-length-mm-cm", "topic": "m.length", "strand": "measure", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "cmTimes10", "type": "int", "min": 24, "max": 95 }
+      ],
+      "stem": "How many millimetres are there in {{cmTimes10/10}} cm? (1 cm = 10 mm)",
+      "answer": "{{cmTimes10}}",
+      "unit": "mm"
+    },
+    {
+      "id": "e3-tpl-weight-remaining", "topic": "m.weight", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "kg",  "type": "int", "min": 2, "max": 5 },
+        { "name": "used","type": "int", "min": 350, "max": 1450, "step": 50 }
+      ],
+      "stem": "A bag of flour weighs {{kg}} kg. A baker uses {{used}} g. How many grams of flour are left? (1 kg = 1000 g)",
+      "answer": "{{kg * 1000 - used}}",
+      "unit": "g"
+    },
+    {
+      "id": "e3-tpl-wage-hours", "topic": "m.money", "strand": "measure", "calc": true, "marks": 3, "type": "input-money",
+      "params": [
+        { "name": "name", "type": "pick", "from": ["Lisa","Marco","Priya","Dan","Ada","Yusuf"] },
+        { "name": "h",    "type": "int", "min": 3, "max": 8 },
+        { "name": "rate", "type": "int", "min": 8, "max": 12 }
+      ],
+      "stem": "{{name}} works {{h}} hours and earns £{{rate}} per hour. How much does {{name}} earn in total?",
+      "answer": "{{h * rate}}",
+      "unit": "£"
+    },
+    {
+      "id": "e3-tpl-bus-passengers", "topic": "n.add", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "start", "type": "int", "min": 24, "max": 48 },
+        { "name": "off",   "type": "int", "min": 5,  "max": 17 },
+        { "name": "on",    "type": "int", "min": 3,  "max": 15 }
+      ],
+      "stem": "A bus has {{start}} passengers. At the next stop {{off}} get off and {{on}} get on. How many passengers are on the bus now?",
+      "answer": "{{start - off + on}}"
+    },
+    {
+      "id": "e3-tpl-eggs-boxes", "topic": "n.mult", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "perBox", "type": "pick", "from": [6, 10, 12, 15] },
+        { "name": "boxes",  "type": "int", "min": 3, "max": 9 }
+      ],
+      "stem": "A box holds {{perBox}} eggs. How many eggs are in {{boxes}} boxes?",
+      "answer": "{{perBox * boxes}}"
+    },
+    {
+      "id": "e3-tpl-frac-of-class", "topic": "n.frac", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "den",   "type": "pick", "from": [2, 3, 4, 5] },
+        { "name": "groups","type": "int", "min": 3, "max": 8 },
+        { "name": "total", "type": "expr", "expr": "den * groups" }
+      ],
+      "stem": "There are {{total}} students in a class. One {{den == 2 ? 'half' : den == 3 ? 'third' : den == 4 ? 'quarter' : 'fifth'}} of them walk to school. How many students walk to school?",
+      "answer": "{{groups}}"
+    },
+    {
+      "id": "e3-tpl-perimeter-rect", "topic": "m.length", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "L", "type": "int", "min": 6, "max": 28 },
+        { "name": "W", "type": "int", "min": 3, "max": 18 }
+      ],
+      "stem": "A rectangle is {{L}} m long and {{W}} m wide. What is its perimeter, in metres?",
+      "answer": "{{2 * (L + W)}}",
+      "unit": "m"
+    },
+    {
+      "id": "e3-tpl-pence-to-pounds", "topic": "n.money", "strand": "number", "calc": false, "marks": 1, "type": "input-money",
+      "params": [
+        { "name": "p", "type": "int", "min": 115, "max": 985, "step": 5 }
+      ],
+      "stem": "Write {{p}}p in pounds. Enter the value in the answer box (the £ symbol is shown for you).",
+      "answer": "{{p/100}}",
+      "unit": "£"
+    },
+    {
+      "id": "e3-tpl-doubles", "topic": "n.mult", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [
+        { "name": "n", "type": "int", "min": 12, "max": 49 }
+      ],
+      "stem": "Double {{n}}",
+      "answer": "{{n * 2}}"
+    },
+    {
+      "id": "e3-tpl-capacity-bottles", "topic": "m.capacity", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "ml",   "type": "pick", "from": [250, 330, 500, 750] },
+        { "name": "n",    "type": "int", "min": 3, "max": 8 }
+      ],
+      "stem": "Each bottle holds {{ml}} ml. How many millilitres are in {{n}} bottles?",
+      "answer": "{{ml * n}}",
+      "unit": "ml"
+    }
+  ]
+}

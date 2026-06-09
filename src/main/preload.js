@@ -5,8 +5,9 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('mfs', {
   // Data
-  loadBank:     (level) => ipcRenderer.invoke('mfs:loadBank', level),
-  loadSpec:     (level) => ipcRenderer.invoke('mfs:loadSpec', level),
+  loadBank:      (level) => ipcRenderer.invoke('mfs:loadBank', level),
+  loadSpec:      (level) => ipcRenderer.invoke('mfs:loadSpec', level),
+  loadTemplates: (level) => ipcRenderer.invoke('mfs:loadTemplates', level),
   loadHistory:  () => ipcRenderer.invoke('mfs:loadHistory'),
   saveAttempt:  (a) => ipcRenderer.invoke('mfs:saveAttempt', a),
   clearHistory: () => ipcRenderer.invoke('mfs:clearHistory'),

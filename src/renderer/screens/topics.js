@@ -2,7 +2,7 @@
 // topic in the spec; clicking one shuffles all questions in that topic
 // and shows them one at a time with immediate feedback.
 
-import { h, renderStem, dataTable, barChart, shuffle, makeRng, randomSeed } from './components.js';
+import { h, renderStem, dataTable, barChart, shuffle, makeRng, randomSeed, fractionInput } from './components.js';
 import { markQuestion } from '../engine/marker.js';
 
 export async function showTopics(api, state) {
@@ -70,6 +70,14 @@ export async function showTopics(api, state) {
             h('span', {}, ...renderStem(optTxt))));
         });
         card.appendChild(opts);
+      } else if (q.type === 'input-fraction') {
+        let val = '';
+        const fr = fractionInput('', (v) => { val = v; });
+        const btn = h('button', { class: 'orange-btn', onClick: () => onSubmit(val) }, 'Submit');
+        card.appendChild(h('div', { class: 'frac-input-row' },
+          h('span', { class: 'frac-helper' }, 'Answer:'),
+          fr, btn));
+        queueMicrotask(() => fr._focus());
       } else {
         const inp = h('input', { type: 'text', placeholder: 'Answer' });
         const btn = h('button', { class: 'orange-btn', onClick: () => onSubmit(inp.value) }, 'Submit');

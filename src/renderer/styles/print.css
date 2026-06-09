@@ -270,6 +270,26 @@
   letter-spacing: 1px;
 }
 
+/* Stacked answer boxes for fraction-input questions. Drawn so a student
+   can write the numerator in the top box, the denominator in the bottom
+   box. Mirrors the on-screen .frac-input UI. */
+.print-frac {
+  display: inline-block;
+  margin: 2mm 0 4mm 13mm;
+  width: 32mm;
+  vertical-align: middle;
+}
+.print-frac-box {
+  border: 1.2px solid #000;
+  height: 12mm;
+  width: 100%;
+}
+.print-frac-bar {
+  height: 0.8mm;
+  background: #000;
+  margin: 1.5mm 0;
+}
+
 /* Print toolbar (only on screen) */
 .print-toolbar {
   position: sticky; top: 0;

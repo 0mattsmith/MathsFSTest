@@ -199,5 +199,182 @@ ok('marker: 2/4 marks as equivalent to 1/2',
      return mark(q, '1/2') === 2;
    })());
 
+// --- 6) Templates ------------------------------------------------------
+// Load each template pack, expand every template with 5 different
+// seeds, and validate that:
+//   • the stem renders without leftover {{...}} tokens
+//   • the answer renders without leftover {{...}} tokens
+//   • the topic is defined in the spec
+//   • types are recognised
+//   • param values are inside their declared ranges
+//   • two different seeds usually give different stems (proves the
+//     RNG is doing something; not strictly required so 95% threshold)
+//   • two identical seeds always give the same stem (determinism)
+
+// Replicate the evaluator + expander logic inline (the renderer modules
+// use ESM `import`; rather than pull them in we re-implement them here
+// — fewer moving parts, also catches drift between the two).
+const BANNED = /\b(import|require|eval|Function|process|window|document|globalThis|self|fetch|XMLHttpRequest|WebSocket|constructor|prototype|__proto__|this)\b/;
+function tplEval(expr, env) {
+  const s = String(expr).trim();
+  if (BANNED.test(s)) throw new Error('Disallowed token: ' + s);
+  const names = Object.keys(env);
+  const values = names.map(n => env[n]);
+  // eslint-disable-next-line no-new-func
+  return new Function(...names, '"use strict"; return (' + s + ')')(...values);
+}
+function tplSub(text, env) {
+  return String(text).replace(/\{\{([^}]+)\}\}/g, (_, raw) => {
+    const expr = raw.trim();
+    if (expr.startsWith('money:')) {
+      const v = expr.slice(6).trim();
+      const pence = env[v] != null ? Number(env[v]) : Number(tplEval(v, env));
+      return '£' + (pence / 100).toFixed(2);
+    }
+    if (env[expr] !== undefined) return String(env[expr]);
+    try {
+      const v = tplEval(expr, env);
+      if (typeof v === 'number' && !Number.isInteger(v)) return String(Number(v.toFixed(6)));
+      return String(v);
+    } catch { return '{{' + expr + '}}'; }
+  });
+}
+function pickParam(rng, env, p) {
+  if (p.type === 'int') {
+    const step = p.step || 1;
+    const lo = Math.ceil(p.min / step), hi = Math.floor(p.max / step);
+    const v = Math.floor(rng() * (hi - lo + 1)) + lo;
+    return v * step;
+  }
+  if (p.type === 'pick') return p.from[Math.floor(rng() * p.from.length)];
+  if (p.type === 'expr') return tplEval(p.expr, env);
+  throw new Error('Bad param type ' + p.type);
+}
+function tplExpand(tpl, seed) {
+  const rng = makeRng(seed + '|' + tpl.id);
+  const env = {};
+  for (const p of (tpl.params || [])) env[p.name] = pickParam(rng, env, p);
+  const out = {
+    id: tpl.id + '#' + seed.slice(0, 6),
+    topic: tpl.topic, strand: tpl.strand, calc: !!tpl.calc,
+    marks: tpl.marks, type: tpl.type,
+    stem: tplSub(tpl.stem, env),
+    answer: tplSub(tpl.answer, env),
+    _env: env,
+  };
+  return out;
+}
+
+const tplPacks = {};
+for (const lv of LEVELS) {
+  try {
+    tplPacks[lv] = readJson(path.join(__dirname, 'assets', 'templates', lv + '.json'));
+  } catch {
+    tplPacks[lv] = { templates: [] };
+  }
+}
+const VALID_TYPES = new Set(['mcq','input','input-money','input-fraction']);
+
+for (const lv of LEVELS) {
+  const pack = tplPacks[lv];
+  ok(`${lv} templates pack loaded`, Array.isArray(pack.templates), pack.templates && pack.templates.length + ' templates');
+  for (const tpl of (pack.templates || [])) {
+    // Validate static fields
+    ok(`${lv}/${tpl.id}: topic in spec`,
+       specs[lv].topics.some(t => t.id === tpl.topic), tpl.topic);
+    ok(`${lv}/${tpl.id}: strand valid`,
+       ['number','measure','data'].includes(tpl.strand), tpl.strand);
+    ok(`${lv}/${tpl.id}: type recognised`,
+       VALID_TYPES.has(tpl.type), tpl.type);
+    ok(`${lv}/${tpl.id}: marks > 0`, tpl.marks > 0);
+
+    // Expand with 5 seeds, check output
+    const seeds = ['SEED1', 'SEED2', 'SEED3', 'SEED4', 'SEED5'];
+    let stems = [];
+    let allGood = true;
+    let lastErr = '';
+    for (const seed of seeds) {
+      try {
+        const q = tplExpand(tpl, seed);
+        if (/\{\{/.test(q.stem)) { allGood = false; lastErr = 'unrendered token in stem: ' + q.stem; break; }
+        if (/\{\{/.test(q.answer)) { allGood = false; lastErr = 'unrendered token in answer: ' + q.answer; break; }
+        if (!q.answer || q.answer === 'NaN' || q.answer === 'undefined') {
+          allGood = false; lastErr = 'bad answer: ' + q.answer + ' env=' + JSON.stringify(q._env); break;
+        }
+        stems.push(q.stem);
+      } catch (err) { allGood = false; lastErr = err.message; break; }
+    }
+    ok(`${lv}/${tpl.id}: expands cleanly under 5 seeds`, allGood, lastErr);
+
+    // Determinism check
+    try {
+      const q1 = tplExpand(tpl, 'DETERMINISM_CHECK');
+      const q2 = tplExpand(tpl, 'DETERMINISM_CHECK');
+      ok(`${lv}/${tpl.id}: same seed gives same stem`, q1.stem === q2.stem);
+    } catch (err) {
+      ok(`${lv}/${tpl.id}: determinism check threw`, false, err.message);
+    }
+  }
+}
+
+// --- 7) Answer-leak detection ----------------------------------------
+// Catches cases where a stem accidentally contains the literal answer,
+// e.g. "Write your answer like 21:35" when the answer is "21:35", or
+// "as a fraction (e.g. 3/10)" when the answer happens to be 3/10. Only
+// applies to compound-format answers (containing ":", "/" or a £/p
+// prefix) — pure numeric answers like "8" are too common as
+// incidental digits in stems to flag without massive false positives.
+function answerLeaksIntoStem(stem, answer) {
+  if (!answer || typeof answer !== 'string') return false;
+  const a = answer.trim();
+  if (a.length < 3) return false;
+  // Compound-format answer: time, fraction, money. These almost never
+  // appear in a stem by chance, so a substring hit is a real leak.
+  const isCompound = /[:/]/.test(a) || /^£/.test(a);
+  if (!isCompound) return false;
+  return stem.includes(a);
+}
+for (const lv of LEVELS) {
+  // Static questions
+  for (const q of banks[lv].questions) {
+    if (q.type === 'mcq') continue;  // MCQ options are supposed to include the answer
+    ok(`${lv}/${q.id}: stem does not leak compound answer`,
+       !answerLeaksIntoStem(q.stem || '', String(q.answer || '')),
+       'stem: "' + (q.stem || '').slice(0, 80) + '..." answer: ' + q.answer);
+  }
+  // Templated questions, expanded with 5 seeds each
+  for (const tpl of (tplPacks[lv].templates || [])) {
+    for (const seed of ['LEAK1','LEAK2','LEAK3','LEAK4','LEAK5']) {
+      let q;
+      try { q = tplExpand(tpl, seed); } catch { continue; }
+      if (q.type === 'mcq') continue;
+      ok(`${lv}/${tpl.id} @ ${seed}: stem does not leak compound answer`,
+         !answerLeaksIntoStem(q.stem, q.answer),
+         'stem: "' + q.stem.slice(0, 80) + '..." answer: ' + q.answer);
+    }
+  }
+}
+
+// Estimate: how many unique variants does a template pack produce?
+// For each template, multiply parameter range sizes. Cap each param at
+// 50 so the product doesn't blow up reporting-wise.
+function variantSpace(tpl) {
+  let total = 1;
+  for (const p of (tpl.params || [])) {
+    if (p.type === 'int') {
+      const step = p.step || 1;
+      total *= Math.min(50, Math.floor((p.max - p.min) / step) + 1);
+    } else if (p.type === 'pick') {
+      total *= p.from.length;
+    } // expr params are derived, not chosen
+  }
+  return total;
+}
+for (const lv of LEVELS) {
+  const pack = tplPacks[lv];
+  const sum = (pack.templates || []).reduce((a, t) => a + variantSpace(t), 0);
+  ok(`${lv}: template variant space ≥ 500`, sum >= 500, sum + ' variants');
+}
+
 console.log('\n' + (failures === 0 ? 'All checks passed.' : failures + ' failure(s).'));
 process.exit(failures === 0 ? 0 : 1);

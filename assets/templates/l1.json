@@ -1,0 +1,297 @@
+{
+  "board": "edexcel",
+  "level": "l1",
+  "templates": [
+    {
+      "id": "l1-tpl-round-100", "topic": "n.order", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [ { "name": "n", "type": "int", "min": 1234, "max": 9876 } ],
+      "stem": "Round {{n}} to the nearest 100.",
+      "answer": "{{Math.round(n/100) * 100}}"
+    },
+    {
+      "id": "l1-tpl-round-1000", "topic": "n.approx", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [ { "name": "n", "type": "int", "min": 2345, "max": 9876 } ],
+      "stem": "Round {{n}} to the nearest 1 000.",
+      "answer": "{{Math.round(n/1000) * 1000}}"
+    },
+    {
+      "id": "l1-tpl-add-3d", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 234, "max": 689 },
+        { "name": "b", "type": "int", "min": 178, "max": 487 }
+      ],
+      "stem": "Work out {{a}} + {{b}}",
+      "answer": "{{a + b}}"
+    },
+    {
+      "id": "l1-tpl-sub-4d", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 1200, "max": 2890 },
+        { "name": "b", "type": "int", "min": 286,  "max": 1180 }
+      ],
+      "stem": "Work out {{a}} − {{b}}",
+      "answer": "{{a - b}}"
+    },
+    {
+      "id": "l1-tpl-mult-2d2d", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 13, "max": 49 },
+        { "name": "b", "type": "int", "min": 12, "max": 24 }
+      ],
+      "stem": "Work out {{a}} × {{b}}",
+      "answer": "{{a * b}}"
+    },
+    {
+      "id": "l1-tpl-bidmas-1", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 5,  "max": 24 },
+        { "name": "b", "type": "int", "min": 3,  "max": 8 },
+        { "name": "c", "type": "int", "min": 2,  "max": 9 }
+      ],
+      "stem": "Work out {{a}} + {{b}} × {{c}}",
+      "answer": "{{a + b * c}}"
+    },
+    {
+      "id": "l1-tpl-bidmas-2", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 8,  "max": 22 },
+        { "name": "b", "type": "int", "min": 2,  "max": 9 },
+        { "name": "c", "type": "int", "min": 2,  "max": 6 }
+      ],
+      "stem": "Work out ({{a}} + {{b}}) ÷ {{c}} (give whole-number answer if it divides exactly, otherwise to 1 d.p.)",
+      "answer": "{{((a + b) / c).toFixed(1).replace(/\\.0$/,'')}}"
+    },
+    {
+      "id": "l1-tpl-pct-50", "topic": "n.pct", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "n2", "type": "int", "min": 12, "max": 200, "step": 2 }
+      ],
+      "stem": "Work out 50% of {{n2 * 2}}",
+      "answer": "{{n2}}"
+    },
+    {
+      "id": "l1-tpl-pct-25", "topic": "n.pct", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "n4", "type": "int", "min": 8, "max": 120, "step": 4 }
+      ],
+      "stem": "Work out 25% of {{n4 * 4}}",
+      "answer": "{{n4}}"
+    },
+    {
+      "id": "l1-tpl-pct-10", "topic": "n.pct", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "n10", "type": "int", "min": 12, "max": 380, "step": 10 }
+      ],
+      "stem": "Work out 10% of {{n10}}",
+      "answer": "{{n10 / 10}}"
+    },
+    {
+      "id": "l1-tpl-pct-of-marks", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input",
+      "params": [
+        { "name": "name", "type": "pick", "from": ["Lola","Marcus","Aisha","Jude","Sara","Devan"] },
+        { "name": "total","type": "int", "min": 40, "max": 80, "step": 10 },
+        { "name": "frac10","type": "int", "min": 5, "max": 9 }
+      ],
+      "stem": "{{name}} scored {{Math.round(total * frac10 / 10)}} out of {{total}} on a test. What percentage is this?",
+      "answer": "{{Math.round((Math.round(total * frac10 / 10) / total) * 100)}}",
+      "unit": "%"
+    },
+    {
+      "id": "l1-tpl-pct-sale", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "params": [
+        { "name": "item",  "type": "pick", "from": ["jacket","laptop","phone","bike","sofa","TV","fridge"] },
+        { "name": "price", "type": "int", "min": 50, "max": 400, "step": 10 },
+        { "name": "pct",   "type": "pick", "from": [10, 15, 20, 25, 30] }
+      ],
+      "stem": "A {{item}} costs £{{price}}. In a sale it is reduced by {{pct}}%. What is the sale price?",
+      "answer": "{{price * (100 - pct) / 100}}",
+      "unit": "£"
+    },
+    {
+      "id": "l1-tpl-vat", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "params": [
+        { "name": "item",  "type": "pick", "from": ["printer","monitor","camera","speaker","kettle"] },
+        { "name": "price", "type": "int", "min": 60, "max": 800, "step": 5 }
+      ],
+      "stem": "A {{item}} costs £{{price}} plus VAT at 20%. What is the total price?",
+      "answer": "{{price * 1.2}}",
+      "unit": "£"
+    },
+    {
+      "id": "l1-tpl-wage", "topic": "m.money", "strand": "measure", "calc": true, "marks": 3, "type": "input-money",
+      "params": [
+        { "name": "name", "type": "pick", "from": ["Tom","Sara","Lila","Ben","Aisha","Jamal","Maya","Theo"] },
+        { "name": "rate10","type": "int", "min": 75, "max": 145, "step": 5 },
+        { "name": "h",    "type": "int", "min": 18, "max": 40 }
+      ],
+      "stem": "{{name}} earns £{{rate10/10}} per hour and works {{h}} hours one week. How much does {{name}} earn before tax?",
+      "answer": "{{(rate10/10) * h}}",
+      "unit": "£"
+    },
+    {
+      "id": "l1-tpl-ratio-share", "topic": "n.ratio", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 2, "max": 5 },
+        { "name": "b", "type": "int", "min": 2, "max": 5 },
+        { "name": "per", "type": "int", "min": 8, "max": 25 },
+        { "name": "total", "type": "expr", "expr": "per * (a + b)" }
+      ],
+      "stem": "Share £{{total}} in the ratio {{a}} : {{b}}. The smaller share is £?",
+      "answer": "{{Math.min(a, b) * per}}"
+    },
+    {
+      "id": "l1-tpl-recipe-scale", "topic": "n.ratio", "strand": "number", "calc": true, "marks": 3, "type": "input",
+      "params": [
+        { "name": "ing",     "type": "pick", "from": ["flour","sugar","butter","oats","rice"] },
+        { "name": "people1", "type": "int", "min": 4, "max": 8 },
+        { "name": "amt1",    "type": "int", "min": 200, "max": 600, "step": 50 },
+        { "name": "people2", "type": "int", "min": 6, "max": 18 }
+      ],
+      "stem": "A recipe for {{people1}} people uses {{amt1}} g of {{ing}}. How much {{ing}} is needed for {{people2}} people, in grams?",
+      "answer": "{{Math.round(amt1 * people2 / people1)}}",
+      "unit": "g",
+      "tolerance": 1
+    },
+    {
+      "id": "l1-tpl-perimeter-rect", "topic": "m.peri", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "L", "type": "int", "min": 4, "max": 24 },
+        { "name": "W", "type": "int", "min": 3, "max": 18 }
+      ],
+      "stem": "A rectangular {{['garden','room','field','car park','rug'][Math.floor((L + W) % 5)]}} is {{L}} m long and {{W}} m wide. What is its perimeter, in metres?",
+      "answer": "{{2 * (L + W)}}",
+      "unit": "m"
+    },
+    {
+      "id": "l1-tpl-area-rect", "topic": "m.area", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "L", "type": "int", "min": 3, "max": 12 },
+        { "name": "W2","type": "int", "min": 4, "max": 18 }
+      ],
+      "stem": "A rectangular floor is {{L}}.{{W2 % 10}} m by {{Math.floor(W2/2)}}.{{(W2 * 3) % 10}} m. What is its area, in m². Give answer to 2 d.p.",
+      "answer": "{{((L + (W2 % 10)/10) * (Math.floor(W2/2) + ((W2*3)%10)/10)).toFixed(2)}}",
+      "tolerance": 0.05,
+      "unit": "m²"
+    },
+    {
+      "id": "l1-tpl-volume-cuboid", "topic": "m.volume", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "params": [
+        { "name": "L", "type": "int", "min": 5, "max": 18 },
+        { "name": "W", "type": "int", "min": 3, "max": 12 },
+        { "name": "H", "type": "int", "min": 2, "max": 9 }
+      ],
+      "stem": "A cuboid box measures {{L}} cm by {{W}} cm by {{H}} cm. What is its volume, in cm³?",
+      "answer": "{{L * W * H}}",
+      "unit": "cm³"
+    },
+    {
+      "id": "l1-tpl-mm-cm", "topic": "m.units", "strand": "measure", "calc": false, "marks": 1, "type": "input",
+      "params": [ { "name": "cm10", "type": "int", "min": 24, "max": 95 } ],
+      "stem": "How many millimetres are there in {{cm10/10}} cm?",
+      "answer": "{{cm10}}",
+      "unit": "mm"
+    },
+    {
+      "id": "l1-tpl-kg-g", "topic": "m.units", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [ { "name": "kg10", "type": "int", "min": 12, "max": 78 } ],
+      "stem": "Convert {{kg10/10}} kg into grams.",
+      "answer": "{{kg10 * 100}}",
+      "unit": "g"
+    },
+    {
+      "id": "l1-tpl-map-scale", "topic": "m.scale", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "params": [
+        { "name": "cm", "type": "int", "min": 4, "max": 18 },
+        { "name": "scale", "type": "pick", "from": [2, 5, 10] }
+      ],
+      "stem": "On a map, 1 cm represents {{scale}} km. Two towns are {{cm}} cm apart on the map. How far apart are they in real life, in km?",
+      "answer": "{{cm * scale}}",
+      "unit": "km"
+    },
+    {
+      "id": "l1-tpl-mean", "topic": "d.avg", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "n",   "type": "pick", "from": [4, 5, 6] },
+        { "name": "avg", "type": "int", "min": 5, "max": 14 },
+        { "name": "d1",  "type": "int", "min": -3, "max": 3 },
+        { "name": "d2",  "type": "int", "min": -4, "max": 4 },
+        { "name": "d3",  "type": "int", "min": -4, "max": 4 }
+      ],
+      "stem": "Find the mean of these {{n}} numbers: {{avg + d1}}, {{avg + d2}}, {{avg - d1 - d2 + (n - 3) * 0}}, {{avg - d3}}, {{n > 4 ? (avg + d3) + ',' : ''}}{{n > 5 ? ' ' + avg + ',' : ''}} {{avg}}",
+      "answer": "{{avg}}"
+    },
+    {
+      "id": "l1-tpl-range", "topic": "d.avg", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "lo", "type": "int", "min": 4, "max": 14 },
+        { "name": "hi", "type": "int", "min": 18, "max": 36 },
+        { "name": "x1", "type": "int", "min": 6, "max": 16 },
+        { "name": "x2", "type": "int", "min": 8, "max": 20 }
+      ],
+      "stem": "Find the range of: {{x1}}, {{lo}}, {{x2}}, {{hi}}, {{x1 + 2}}",
+      "answer": "{{hi - lo}}"
+    },
+    {
+      "id": "l1-tpl-median-odd", "topic": "d.avg", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "m",  "type": "int", "min": 6, "max": 18 },
+        { "name": "d1", "type": "int", "min": 1, "max": 4 },
+        { "name": "d2", "type": "int", "min": 2, "max": 6 },
+        { "name": "d3", "type": "int", "min": 4, "max": 8 }
+      ],
+      "stem": "Find the median of: {{m + d2}}, {{m - d1}}, {{m + d1}}, {{m - d3}}, {{m + d3}}, {{m - d2}}, {{m}}",
+      "answer": "{{m}}"
+    },
+    {
+      "id": "l1-tpl-prob-fraction", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input-fraction",
+      "params": [
+        { "name": "r", "type": "int", "min": 2, "max": 5 },
+        { "name": "b", "type": "int", "min": 2, "max": 5 },
+        { "name": "g", "type": "int", "min": 2, "max": 5 }
+      ],
+      "stem": "A bag has {{r}} red, {{b}} blue and {{g}} green sweets. What is the probability of picking a red sweet (as a fraction)?",
+      "answer": "{{r}}/{{r + b + g}}"
+    },
+    {
+      "id": "l1-tpl-distance-time", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [
+        { "name": "startMin", "type": "int", "min": 480, "max": 720, "step": 3 },
+        { "name": "endMin",   "type": "expr", "expr": "startMin + 40 + (startMin % 53)" }
+      ],
+      "stem": "A train leaves at {{Math.floor(startMin/60)}}:{{startMin%60 < 10 ? '0' + (startMin%60) : (startMin%60)}} and arrives at {{Math.floor(endMin/60)}}:{{endMin%60 < 10 ? '0' + (endMin%60) : (endMin%60)}}. How many minutes does the journey take?",
+      "answer": "{{endMin - startMin}}",
+      "unit": "minutes"
+    },
+    {
+      "id": "l1-tpl-paint-coverage", "topic": "m.area", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "L", "type": "int", "min": 3, "max": 8 },
+        { "name": "W", "type": "int", "min": 2, "max": 5 },
+        { "name": "cov", "type": "pick", "from": [4, 5, 6, 8] }
+      ],
+      "stem": "A wall measures {{L}} m by {{W}}.5 m. Paint covers {{cov}} m² per litre. How many whole litres of paint are needed for one coat? (Round up.)",
+      "answer": "{{Math.ceil(L * (W + 0.5) / cov)}}",
+      "unit": "litres"
+    },
+    {
+      "id": "l1-tpl-delivery-mileage", "topic": "n.fourop", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "params": [
+        { "name": "miles", "type": "int", "min": 80, "max": 320, "step": 10 },
+        { "name": "pence", "type": "int", "min": 30, "max": 55, "step": 5 }
+      ],
+      "stem": "A delivery driver drives {{miles}} miles a week and is paid {{pence}}p per mile. How much is he paid for the week?",
+      "answer": "{{(miles * pence)/100}}",
+      "unit": "£"
+    },
+    {
+      "id": "l1-tpl-fraction-add", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input-fraction",
+      "params": [
+        { "name": "den", "type": "pick", "from": [4, 6, 8, 10, 12] },
+        { "name": "a",   "type": "int", "min": 1, "max": 5 },
+        { "name": "b",   "type": "int", "min": 1, "max": 5 }
+      ],
+      "stem": "Work out {{a}}/{{den}} + {{b}}/{{den}}. Give your answer as a fraction.",
+      "answer": "{{a + b}}/{{den}}"
+    }
+  ]
+}

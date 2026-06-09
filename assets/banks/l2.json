@@ -28,8 +28,8 @@
       "answer": "18"
     },
     {
-      "id": "l2-006", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input",
-      "stem": "Work out ${frac:2/3} ${times} ${frac:3/5}. Write your answer as a fraction in lowest terms (e.g. 2/5).",
+      "id": "l2-006", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input-fraction",
+      "stem": "Work out ${frac:2/3} ${times} ${frac:3/5}. Write your answer as a fraction in lowest terms.",
       "answer": "2/5"
     },
     {
@@ -194,12 +194,12 @@
       "answer": "Positive correlation"
     },
     {
-      "id": "l2-032", "topic": "d.prob", "strand": "data", "calc": true, "marks": 3, "type": "input",
-      "stem": "A fair six-sided dice is rolled twice. What is the probability of getting a 6 both times? Write as a fraction in lowest terms (e.g. 1/36).",
+      "id": "l2-032", "topic": "d.prob", "strand": "data", "calc": true, "marks": 3, "type": "input-fraction",
+      "stem": "A fair six-sided dice is rolled twice. What is the probability of getting a 6 both times? Write as a fraction in lowest terms.",
       "answer": "1/36"
     },
     {
-      "id": "l2-033", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "id": "l2-033", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input-fraction",
       "stem": "A bag has 4 red and 6 blue counters. One is taken at random. What is the probability it is red? Write as a fraction in lowest terms.",
       "answer": "2/5"
     },
@@ -211,8 +211,8 @@
       "unit": "%"
     },
     {
-      "id": "l2-035", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input",
-      "stem": "Work out ${frac:2/5} + ${frac:1/4}. Write as a fraction (e.g. 13/20).",
+      "id": "l2-035", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input-fraction",
+      "stem": "Work out ${frac:2/5} + ${frac:1/4}. Write as a fraction.",
       "answer": "13/20"
     },
     {

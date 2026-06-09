@@ -2,7 +2,7 @@
 // Single question per screen, footer drives prev/next/save, calculator
 // pane opens for Section B, timer counts down per section.
 
-import { h, makeCountdown, renderStem, dataTable, barChart } from './components.js';
+import { h, makeCountdown, renderStem, dataTable, barChart, fractionInput } from './components.js';
 import { buildPaper } from '../engine/paper-builder.js';
 import { markPaper } from '../engine/marker.js';
 
@@ -11,10 +11,12 @@ export async function showPaper(api, state) {
   screen.innerHTML = '';
 
   // Load bank + spec
-  let bank, spec;
+  let bank, spec, templates;
   try {
     bank = await api.bridge.loadBank(state.test.level);
     spec = await api.bridge.loadSpec(state.test.level);
+    const tplFile = await api.bridge.loadTemplates(state.test.level);
+    templates = (tplFile && tplFile.templates) || [];
   } catch (err) {
     screen.appendChild(h('div', { class: 'paper-wrap' },
       h('div', { class: 'q-card' },
@@ -25,7 +27,7 @@ export async function showPaper(api, state) {
   }
   state.bank = bank;
   state.spec = spec;
-  const paper = buildPaper(spec, bank, state.test.seed);
+  const paper = buildPaper(spec, bank, state.test.seed, templates);
   state.test.paper = paper;
   state.responses = state.responses || {};
 
@@ -80,6 +82,15 @@ export async function showPaper(api, state) {
     screen.innerHTML = '';
     const { section, q } = sequence[idx];
 
+    // Enforce: the calculator pane is forcibly hidden on every
+    // non-calc question. Without this, opening the calc in Section B
+    // and then pressing Prev back into Section A leaves the calc
+    // visible AND usable — a real-exam rule violation. We hide it on
+    // every render of a Section A question so the user can't sneak it
+    // open by toggling sections quickly either.
+    const pane = document.getElementById('calc-pane');
+    if (pane && !section.calc) pane.classList.add('hide');
+
     // Start the timer for the active section if not yet started
     if (!sectionTimers[section.id].started || (currentTimer && currentTimer.getRemaining() !== sectionTimers[section.id].remaining)) {
       startSectionTimer(section);
@@ -122,6 +133,16 @@ export async function showPaper(api, state) {
         opts.appendChild(btn);
       });
       card.appendChild(opts);
+    } else if (q.type === 'input-fraction') {
+      // Stacked numerator/denominator boxes that render like a real
+      // fraction, with a dividing bar between them.
+      const fr = fractionInput(state.responses[q.id] || '',
+        (val) => { state.responses[q.id] = val; });
+      const row = h('div', { class: 'frac-input-row' },
+        h('span', { class: 'frac-helper' }, 'Write your answer as a fraction:'),
+        fr);
+      card.appendChild(row);
+      queueMicrotask(() => fr._focus());
     } else {
       const inputId = 'inp-' + q.id;
       const input = h('input', {

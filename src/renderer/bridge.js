@@ -38,6 +38,14 @@ export const bridge = {
     return fetchJson(`assets/spec/${level}.json`);
   },
 
+  async loadTemplates(level) {
+    if (ELECTRON && window.mfs.loadTemplates) return window.mfs.loadTemplates(level);
+    // Templates are optional — if the file isn't present we just return
+    // an empty list and the app falls back to static questions only.
+    try { return await fetchJson(`assets/templates/${level}.json`); }
+    catch { return { templates: [] }; }
+  },
+
   // ---- History (per-attempt log) -------------------------------------
   loadHistory() {
     if (ELECTRON) return window.mfs.loadHistory();

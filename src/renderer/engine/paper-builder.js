@@ -12,6 +12,7 @@
 //     4. Re-shuffle the picked list to set the running order.
 
 import { makeRng, shuffle, pickOne } from '../screens/components.js';
+import { expandTemplate } from './template-expander.js';
 
 function groupBy(arr, fn) {
   const out = {};
@@ -83,14 +84,28 @@ function pickSection(rng, bank, section) {
   return picked.map((q, i) => ({ ...q, _no: i + 1 }));
 }
 
-export function buildPaper(spec, bank, seed) {
+// Expands every template into a concrete question seeded by the paper
+// seed. Means template-generated questions blend transparently into the
+// pool the picker sees — same `strand`, `topic`, `calc`, etc. — and
+// reproducibility is preserved because each template's expansion uses a
+// deterministic sub-seed derived from the paper seed.
+function effectiveBank(bank, templates, seed) {
+  const expanded = (templates || []).map(t => {
+    try { return expandTemplate(t, seed); }
+    catch (err) { console.warn('Skipping bad template', t.id, err.message); return null; }
+  }).filter(Boolean);
+  return { ...bank, questions: bank.questions.concat(expanded) };
+}
+
+export function buildPaper(spec, bank, seed, templates) {
   const baseRng = makeRng(seed + '|' + spec.level + '|paper');
+  const fullBank = effectiveBank(bank, templates, seed);
   const sections = [];
   let runningNo = 0;
   for (const section of spec.sections) {
     // Sub-seed per section so changing section A doesn't shift section B.
     const sRng = makeRng(seed + '|' + section.id);
-    const items = pickSection(sRng, bank, section);
+    const items = pickSection(sRng, fullBank, section);
     // Renumber as overall paper question numbers.
     const renumbered = items.map(q => {
       runningNo += 1;
@@ -106,12 +121,11 @@ export function buildPaper(spec, bank, seed) {
       questions: renumbered,
     });
   }
-  // Touch baseRng so analyzers know it's used (harmless).
   baseRng();
   return {
     seed,
     level: spec.level,
-    board: bank.board || spec.board,
+    board: fullBank.board || spec.board,
     paperCode: spec.paperCode,
     title: spec.title,
     levelLabel: spec.levelLabel,

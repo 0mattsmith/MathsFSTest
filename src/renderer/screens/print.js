@@ -11,10 +11,12 @@ export async function showPrint(api, state) {
   const screen = document.getElementById('screen');
   screen.innerHTML = '';
 
-  let bank, spec;
+  let bank, spec, templates;
   try {
     bank = await api.bridge.loadBank(state.test.level);
     spec = await api.bridge.loadSpec(state.test.level);
+    const tplFile = await api.bridge.loadTemplates(state.test.level);
+    templates = (tplFile && tplFile.templates) || [];
   } catch (err) {
     screen.appendChild(h('div', { class: 'paper-wrap' },
       h('div', { class: 'q-card' },
@@ -24,7 +26,7 @@ export async function showPrint(api, state) {
     return;
   }
 
-  const paper = buildPaper(spec, bank, state.test.seed);
+  const paper = buildPaper(spec, bank, state.test.seed, templates);
 
   // ---- On-screen toolbar (hidden when printing) -----------------------
   const seedSpan = h('span', { class: 'kbd' }, paper.seed);
@@ -115,6 +117,19 @@ export async function showPrint(api, state) {
         body.appendChild(opts);
         body.appendChild(h('div', { style: { marginTop: '4mm', fontSize: '9.5pt', fontFamily: 'Arial' } },
           'Put a tick (✓) in the box next to your answer.'));
+      } else if (q.type === 'input-fraction') {
+        // Fraction answer: working space, then two stacked answer boxes
+        // (numerator on top, denominator on bottom, dividing line between).
+        body.appendChild(h('div', { style: { marginTop: '4mm', fontSize: '9.5pt', fontFamily: 'Arial' } }, 'Show your working:'));
+        const lines = h('div', { class: 'ans-lines' });
+        const lineCount = Math.max(2, q.marks * 2);
+        for (let i = 0; i < lineCount; i++) lines.appendChild(h('div', { class: 'ans-line' }));
+        body.appendChild(lines);
+        body.appendChild(h('div', { class: 'answer-prompt' }, 'Answer (as a fraction):'));
+        body.appendChild(h('div', { class: 'print-frac' },
+          h('div', { class: 'print-frac-box' }),
+          h('div', { class: 'print-frac-bar' }),
+          h('div', { class: 'print-frac-box' })));
       } else {
         // Working space + answer line
         body.appendChild(h('div', { style: { marginTop: '4mm', fontSize: '9.5pt', fontFamily: 'Arial' } }, 'Show your working:'));

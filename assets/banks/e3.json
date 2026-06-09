@@ -78,7 +78,7 @@
     },
     {
       "id": "e3-014", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
-      "stem": "A film starts at 7:45 pm and lasts 1 hour 50 minutes. What time does it finish? Write your answer in 24-hour clock format (e.g. 21:35).",
+      "stem": "A film starts at 7:45 pm and lasts 1 hour 50 minutes. What time does it finish? Write your answer in 24-hour clock format (HH:MM).",
       "answer": "21:35"
     },
     {

@@ -48,6 +48,11 @@ const api = {
   go(routeName, payload) {
     screenEl.innerHTML = '';
     setFooterMode('hidden');
+    // Always hide the calculator pane on a route change. Otherwise, if a
+    // student submits a paper while the calc was open, it would stay on
+    // top of the results screen with no way to dismiss it (the footer's
+    // Calc button is only wired on Section B of the paper runner).
+    hideCalculator();
     state.routePayload = payload || null;
     routes[routeName]();
   },
@@ -55,6 +60,11 @@ const api = {
   bridge,
   setFooter(opts) { setFooterMode(opts); },
 };
+
+function hideCalculator() {
+  const pane = document.getElementById('calc-pane');
+  if (pane) pane.classList.add('hide');
+}
 
 function setFooterMode(opts) {
   if (opts === 'hidden') { footerbar.classList.add('hide'); return; }
@@ -107,6 +117,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Platform detection — drives which window controls to show.
   applyPlatformChrome();
+
+  // Wire the calculator pane's close button. The pane is a global
+  // element (not part of any one screen) so the listener is set up
+  // once at boot.
+  const calcClose = document.getElementById('calc-close');
+  if (calcClose) calcClose.addEventListener('click', hideCalculator);
 
   // Register the PWA service worker so the app is installable + works
   // offline on Chromebooks. Only when we're served over http(s); in

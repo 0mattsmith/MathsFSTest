@@ -34,6 +34,10 @@ ipcMain.handle('mfs:loadSpec', async (_e, level) => {
   const file = path.join(__dirname, '..', '..', 'assets', 'spec', level + '.json');
   return readJsonOr(file, {});
 });
+ipcMain.handle('mfs:loadTemplates', async (_e, level) => {
+  const file = path.join(__dirname, '..', '..', 'assets', 'templates', level + '.json');
+  return readJsonOr(file, { templates: [] });
+});
 ipcMain.handle('mfs:loadHistory', async () => {
   ensureDir(dataDir());
   return readJsonOr(path.join(dataDir(), 'history.json'), []);

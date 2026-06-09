@@ -210,8 +210,8 @@
       "answer": "${frac:1/2}"
     },
     {
-      "id": "l1-036", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input",
-      "stem": "A bag has 3 red, 2 blue and 5 green sweets. What is the probability of picking a red sweet, as a fraction in lowest terms (write like '3/10')?",
+      "id": "l1-036", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input-fraction",
+      "stem": "A bag has 3 red, 2 blue and 5 green sweets. What is the probability of picking a red sweet, as a fraction in lowest terms?",
       "answer": "3/10"
     },
     {
@@ -260,8 +260,8 @@
       "answer": "8"
     },
     {
-      "id": "l1-044", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input",
-      "stem": "Add ${frac:1/4} + ${frac:1/2}. Write the answer as a fraction in the form a/b.",
+      "id": "l1-044", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input-fraction",
+      "stem": "Add ${frac:1/4} + ${frac:1/2}. Write the answer as a fraction.",
       "answer": "3/4"
     }
   ]

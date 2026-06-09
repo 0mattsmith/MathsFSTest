@@ -1,0 +1,298 @@
+{
+  "board": "edexcel",
+  "level": "l2",
+  "templates": [
+    {
+      "id": "l2-tpl-dec-add", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a100", "type": "int", "min": 145, "max": 875 },
+        { "name": "b100", "type": "int", "min": 95,  "max": 460 }
+      ],
+      "stem": "Work out {{(a100/100).toFixed(2)}} + {{(b100/100).toFixed(2)}}",
+      "answer": "{{((a100 + b100)/100).toFixed(2)}}"
+    },
+    {
+      "id": "l2-tpl-dec-mul", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a",   "type": "int", "min": 3,  "max": 9 },
+        { "name": "b10", "type": "int", "min": 12, "max": 89 }
+      ],
+      "stem": "Work out {{a}} × {{(b10/10).toFixed(1)}}",
+      "answer": "{{(a * b10 / 10).toFixed(1).replace(/\\.0$/,'')}}"
+    },
+    {
+      "id": "l2-tpl-bidmas-sq", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 4, "max": 18 },
+        { "name": "b", "type": "int", "min": 2, "max": 9 }
+      ],
+      "stem": "Work out {{a}} + {{b}}²",
+      "answer": "{{a + b * b}}"
+    },
+    {
+      "id": "l2-tpl-bidmas-cu", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 5,  "max": 25 },
+        { "name": "b", "type": "int", "min": 2,  "max": 4 }
+      ],
+      "stem": "Work out {{a}} − {{b}}³",
+      "answer": "{{a - b * b * b}}"
+    },
+    {
+      "id": "l2-tpl-pct-of", "topic": "n.pct", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "pct",   "type": "pick", "from": [15, 20, 25, 30, 35, 40, 60, 75] },
+        { "name": "base20","type": "int", "min": 5, "max": 25 }
+      ],
+      "stem": "Work out {{pct}}% of {{base20 * 20}}",
+      "answer": "{{(pct * base20 * 20) / 100}}"
+    },
+    {
+      "id": "l2-tpl-pct-sale", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "params": [
+        { "name": "item",  "type": "pick", "from": ["coat","laptop","camera","watch","phone","TV","sofa"] },
+        { "name": "price", "type": "int", "min": 60, "max": 480, "step": 5 },
+        { "name": "pct",   "type": "pick", "from": [15, 20, 25, 30, 35, 40] }
+      ],
+      "stem": "A {{item}} is reduced by {{pct}}% in a sale. The original price was £{{price}}. What is the sale price?",
+      "answer": "{{(price * (100 - pct) / 100).toFixed(2)}}",
+      "unit": "£"
+    },
+    {
+      "id": "l2-tpl-pct-reverse", "topic": "n.pct", "strand": "number", "calc": true, "marks": 4, "type": "input-money",
+      "params": [
+        { "name": "item",   "type": "pick", "from": ["TV","fridge","bike","camera"] },
+        { "name": "after",  "type": "int", "min": 200, "max": 700, "step": 10 },
+        { "name": "pct",    "type": "pick", "from": [10, 15, 20, 25, 30] }
+      ],
+      "stem": "After a {{pct}}% reduction, a {{item}} costs £{{after}}. What was the original price?",
+      "answer": "{{(after / (1 - pct/100)).toFixed(2)}}",
+      "tolerance": 0.5,
+      "unit": "£"
+    },
+    {
+      "id": "l2-tpl-pct-increase", "topic": "n.pct", "strand": "number", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "before","type": "int", "min": 80,  "max": 250, "step": 10 },
+        { "name": "pct",   "type": "pick", "from": [10, 15, 20, 25] }
+      ],
+      "stem": "House prices rose from £{{before * 1000}} to £{{Math.round(before * 1000 * (1 + pct/100))}} in one year. What is the percentage increase (to 1 d.p.)?",
+      "answer": "{{pct.toFixed(1)}}",
+      "tolerance": 0.2,
+      "unit": "%"
+    },
+    {
+      "id": "l2-tpl-ratio-3", "topic": "n.ratio", "strand": "number", "calc": false, "marks": 3, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 2, "max": 6 },
+        { "name": "b", "type": "int", "min": 2, "max": 6 },
+        { "name": "per", "type": "int", "min": 12, "max": 40 }
+      ],
+      "stem": "Share £{{per * (a + b)}} in the ratio {{a}} : {{b}}. The smaller share is £?",
+      "answer": "{{Math.min(a, b) * per}}"
+    },
+    {
+      "id": "l2-tpl-proportion", "topic": "n.ratio", "strand": "number", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "p1", "type": "int", "min": 4, "max": 8 },
+        { "name": "amt","type": "int", "min": 240, "max": 600, "step": 40 },
+        { "name": "p2", "type": "int", "min": 9, "max": 16 }
+      ],
+      "stem": "A recipe for {{p1}} people uses {{amt}} g of pasta. How much pasta is needed for {{p2}} people, in grams?",
+      "answer": "{{Math.round(amt * p2 / p1)}}",
+      "tolerance": 2,
+      "unit": "g"
+    },
+    {
+      "id": "l2-tpl-indices-sq", "topic": "n.indices", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "params": [ { "name": "n", "type": "int", "min": 4, "max": 14 } ],
+      "stem": "Work out {{n}}²",
+      "answer": "{{n * n}}"
+    },
+    {
+      "id": "l2-tpl-indices-cu", "topic": "n.indices", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [ { "name": "n", "type": "int", "min": 2, "max": 6 } ],
+      "stem": "Work out {{n}}³",
+      "answer": "{{n * n * n}}"
+    },
+    {
+      "id": "l2-tpl-estimate", "topic": "n.approx", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "params": [
+        { "name": "a", "type": "int", "min": 195, "max": 478 },
+        { "name": "b10", "type": "int", "min": 28, "max": 78 }
+      ],
+      "stem": "Estimate {{a}} × {{(b10/10).toFixed(1)}} by rounding both to 1 significant figure.",
+      "answer": "{{Math.round(a/100)*100 * Math.round(b10/10)}}"
+    },
+    {
+      "id": "l2-tpl-compound-L", "topic": "m.compound", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "A", "type": "int", "min": 5, "max": 12 },
+        { "name": "B", "type": "int", "min": 3, "max": 8 },
+        { "name": "C", "type": "int", "min": 2, "max": 6 },
+        { "name": "D", "type": "int", "min": 2, "max": 5 }
+      ],
+      "stem": "An L-shaped room is made by joining a {{A}} m by {{B}} m rectangle to a {{C}} m by {{D}} m rectangle. What is the total area, in m²?",
+      "answer": "{{A * B + C * D}}",
+      "unit": "m²"
+    },
+    {
+      "id": "l2-tpl-lawn-bed", "topic": "m.compound", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "L", "type": "int", "min": 8, "max": 16 },
+        { "name": "W", "type": "int", "min": 5, "max": 10 },
+        { "name": "B", "type": "int", "min": 1, "max": 4 }
+      ],
+      "stem": "A rectangular lawn is {{L}} m by {{W}} m. A square flower bed of side {{B}} m is removed from one corner. What is the area of the remaining lawn, in m²?",
+      "answer": "{{L * W - B * B}}",
+      "unit": "m²"
+    },
+    {
+      "id": "l2-tpl-circle-area", "topic": "m.circle", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "params": [ { "name": "r", "type": "int", "min": 2, "max": 9 } ],
+      "stem": "A circular pond has radius {{r}} m. What is its area, in m²? Use π = 3.14 and give to 1 d.p.",
+      "answer": "{{(3.14 * r * r).toFixed(1)}}",
+      "tolerance": 0.3,
+      "unit": "m²"
+    },
+    {
+      "id": "l2-tpl-circle-circ", "topic": "m.circle", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "params": [ { "name": "d", "type": "int", "min": 6, "max": 22 } ],
+      "stem": "What is the circumference of a circle with diameter {{d}} cm? Use π = 3.14 and give to 2 d.p.",
+      "answer": "{{(3.14 * d).toFixed(2)}}",
+      "tolerance": 0.2,
+      "unit": "cm"
+    },
+    {
+      "id": "l2-tpl-km-m", "topic": "m.units", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "params": [ { "name": "km", "type": "int", "min": 2, "max": 12 } ],
+      "stem": "Convert {{km}} km to metres.",
+      "answer": "{{km * 1000}}",
+      "unit": "m"
+    },
+    {
+      "id": "l2-tpl-inch-cm", "topic": "m.units", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "params": [ { "name": "inches", "type": "int", "min": 4, "max": 18 } ],
+      "stem": "1 inch is approximately 2.54 cm. Convert {{inches}} inches to cm. Give to 2 d.p.",
+      "answer": "{{(inches * 2.54).toFixed(2)}}",
+      "tolerance": 0.05,
+      "unit": "cm"
+    },
+    {
+      "id": "l2-tpl-map-scale", "topic": "m.scale", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "params": [
+        { "name": "denom", "type": "pick", "from": [25000, 50000, 100000] },
+        { "name": "cm", "type": "int", "min": 4, "max": 18 }
+      ],
+      "stem": "A map has scale 1 : {{denom}}. A road is {{cm}} cm long on the map. How many kilometres is this in real life?",
+      "answer": "{{((cm * denom) / 100000).toFixed(1).replace(/\\.0$/,'')}}",
+      "unit": "km"
+    },
+    {
+      "id": "l2-tpl-pay-monthly", "topic": "m.money", "strand": "measure", "calc": true, "marks": 4, "type": "input-money",
+      "params": [
+        { "name": "item",     "type": "pick", "from": ["car insurance","gym membership","phone contract"] },
+        { "name": "annual",   "type": "int", "min": 480, "max": 1200, "step": 12 },
+        { "name": "monthlyP", "type": "int", "min": 5,   "max": 12 }
+      ],
+      "stem": "Annual {{item}} is £{{annual}}. Pay-monthly is £{{(annual/12 + monthlyP).toFixed(2)}} per month for 12 months. How much cheaper is paying upfront?",
+      "answer": "{{(monthlyP * 12).toFixed(2)}}",
+      "unit": "£"
+    },
+    {
+      "id": "l2-tpl-petrol-cost", "topic": "m.money", "strand": "measure", "calc": true, "marks": 4, "type": "input-money",
+      "params": [
+        { "name": "ppl",   "type": "int", "min": 130, "max": 175, "step": 5 },
+        { "name": "litres","type": "int", "min": 5,   "max": 10 },
+        { "name": "kmPerL","type": "int", "min": 10,  "max": 18 },
+        { "name": "trip",  "type": "int", "min": 60,  "max": 350, "step": 10 }
+      ],
+      "stem": "Petrol costs £{{(ppl/100).toFixed(2)}} per litre. A car uses {{litres}} litres per 100 km. How much does it cost to drive {{trip}} km? Give to nearest penny.",
+      "answer": "{{((trip / 100) * litres * (ppl / 100)).toFixed(2)}}",
+      "tolerance": 0.02,
+      "unit": "£"
+    },
+    {
+      "id": "l2-tpl-freq-mean", "topic": "d.freq", "strand": "data", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "f1", "type": "int", "min": 3, "max": 8 },
+        { "name": "f2", "type": "int", "min": 4, "max": 9 },
+        { "name": "f3", "type": "int", "min": 3, "max": 8 },
+        { "name": "f4", "type": "int", "min": 2, "max": 6 }
+      ],
+      "stem": "A frequency table shows hours of TV per day: 1hr ({{f1}}), 2hr ({{f2}}), 3hr ({{f3}}), 4hr ({{f4}}). Calculate the mean number of hours (to 1 d.p.).",
+      "answer": "{{((1*f1 + 2*f2 + 3*f3 + 4*f4) / (f1 + f2 + f3 + f4)).toFixed(1)}}",
+      "tolerance": 0.1,
+      "unit": "hours"
+    },
+    {
+      "id": "l2-tpl-prob-dice", "topic": "d.prob", "strand": "data", "calc": true, "marks": 3, "type": "input-fraction",
+      "params": [
+        { "name": "n1", "type": "int", "min": 1, "max": 6 },
+        { "name": "n2", "type": "int", "min": 1, "max": 6 }
+      ],
+      "stem": "A fair six-sided dice is rolled twice. What is the probability of getting a {{n1}} then a {{n2}}? Write as a fraction in lowest terms.",
+      "answer": "1/36"
+    },
+    {
+      "id": "l2-tpl-prob-bag", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input-fraction",
+      "params": [
+        { "name": "r", "type": "int", "min": 2, "max": 9 },
+        { "name": "b", "type": "int", "min": 2, "max": 9 }
+      ],
+      "stem": "A bag has {{r}} red and {{b}} blue counters. One is taken at random. What is the probability it is red? Give as a fraction.",
+      "answer": "{{r}}/{{r + b}}"
+    },
+    {
+      "id": "l2-tpl-frac-add", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input-fraction",
+      "params": [
+        { "name": "den", "type": "pick", "from": [6, 8, 10, 12, 15, 20] },
+        { "name": "a",   "type": "int", "min": 1, "max": 7 },
+        { "name": "b",   "type": "int", "min": 1, "max": 7 }
+      ],
+      "stem": "Work out {{a}}/{{den}} + {{b}}/{{den}}. Give your answer as a fraction.",
+      "answer": "{{a + b}}/{{den}}"
+    },
+    {
+      "id": "l2-tpl-frac-of", "topic": "n.frac", "strand": "number", "calc": false, "marks": 3, "type": "input",
+      "params": [
+        { "name": "denom", "type": "pick", "from": [3, 4, 5, 6, 8] },
+        { "name": "num",   "type": "int", "min": 1, "max": 5 },
+        { "name": "base",  "type": "int", "min": 4, "max": 20 }
+      ],
+      "stem": "Work out {{num}}/{{denom}} of {{base * denom}}",
+      "answer": "{{num * base}}"
+    },
+    {
+      "id": "l2-tpl-rect-perimeter", "topic": "m.compound", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "L10", "type": "int", "min": 42, "max": 95 },
+        { "name": "W10", "type": "int", "min": 22, "max": 65 }
+      ],
+      "stem": "Calculate the perimeter of a rectangle that is {{(L10/10).toFixed(1)}} m long and {{(W10/10).toFixed(1)}} m wide. Give to 1 d.p., in metres.",
+      "answer": "{{(2 * (L10 + W10) / 10).toFixed(1).replace(/\\.0$/,'')}}",
+      "unit": "m"
+    },
+    {
+      "id": "l2-tpl-income-tax", "topic": "m.money", "strand": "measure", "calc": true, "marks": 5, "type": "input-money",
+      "params": [
+        { "name": "name", "type": "pick", "from": ["Carla","Devon","Aisha","Jude","Priya"] },
+        { "name": "salary", "type": "int", "min": 18000, "max": 38000, "step": 100 }
+      ],
+      "stem": "{{name}} earns £{{salary}} per year. They pay 20% income tax on earnings above the personal allowance of £12 570. How much income tax do they pay per year?",
+      "answer": "{{((salary - 12570) * 0.20).toFixed(2)}}",
+      "tolerance": 0.5,
+      "unit": "£"
+    },
+    {
+      "id": "l2-tpl-compound-interest", "topic": "n.pct", "strand": "number", "calc": true, "marks": 4, "type": "input",
+      "params": [
+        { "name": "principal", "type": "int", "min": 2000, "max": 8000, "step": 500 },
+        { "name": "rate",      "type": "pick", "from": [3, 4, 5, 6] }
+      ],
+      "stem": "An investment of £{{principal}} increases by {{rate}}% each year. What is its value after 2 years? Give to the nearest £.",
+      "answer": "{{Math.round(principal * Math.pow(1 + rate/100, 2))}}",
+      "unit": "£"
+    }
+  ]
+}

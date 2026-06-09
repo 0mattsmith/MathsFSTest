@@ -194,6 +194,71 @@ export function dataTable(rows, opts = {}) {
   return tbl;
 }
 
+// Fraction input — two stacked text boxes for numerator and
+// denominator, separated by a horizontal bar. Calls onChange with a
+// "num/den" string on every keystroke (or an empty string when neither
+// is filled). The element is keyboard-friendly: pressing "/" in the
+// numerator jumps focus to the denominator; pressing Backspace in the
+// denominator when empty jumps back.
+export function fractionInput(initial, onChange) {
+  let num = '', den = '';
+  if (initial && typeof initial === 'string' && initial.includes('/')) {
+    [num, den] = initial.split('/');
+    num = (num || '').trim();
+    den = (den || '').trim();
+  }
+  const numEl = h('input', {
+    type: 'text', class: 'num', value: num, inputmode: 'numeric',
+    'aria-label': 'Numerator (top of fraction)',
+    placeholder: '?'
+  });
+  const denEl = h('input', {
+    type: 'text', class: 'den', value: den, inputmode: 'numeric',
+    'aria-label': 'Denominator (bottom of fraction)',
+    placeholder: '?'
+  });
+
+  function emit() {
+    const n = numEl.value.trim();
+    const d = denEl.value.trim();
+    if (!n && !d) onChange('');
+    else onChange(n + '/' + d);
+  }
+  function clean(e) {
+    // Strip anything that isn't a digit or leading minus
+    const t = e.target;
+    const v = t.value.replace(/[^0-9-]/g, '').replace(/(?!^)-/g, '');
+    if (v !== t.value) t.value = v;
+  }
+
+  numEl.addEventListener('input', (e) => { clean(e); emit(); });
+  denEl.addEventListener('input', (e) => { clean(e); emit(); });
+  numEl.addEventListener('keydown', (e) => {
+    if (e.key === '/' || e.key === 'ArrowDown' || e.key === 'Enter') {
+      e.preventDefault();
+      denEl.focus();
+      denEl.select();
+    }
+  });
+  denEl.addEventListener('keydown', (e) => {
+    if ((e.key === 'Backspace' && !denEl.value) || e.key === 'ArrowUp') {
+      e.preventDefault();
+      numEl.focus();
+      // Place cursor at the end
+      const v = numEl.value;
+      numEl.value = '';
+      numEl.value = v;
+    }
+  });
+
+  const wrap = h('div', { class: 'frac-input' },
+    numEl,
+    h('div', { class: 'bar', 'aria-hidden': 'true' }),
+    denEl);
+  wrap._focus = () => { numEl.focus(); numEl.select(); };
+  return wrap;
+}
+
 // Tiny SVG bar chart used inline in stems.
 export function barChart(labels, values, opts = {}) {
   const w = opts.width || 360, hgt = opts.height || 160;
