@@ -1,0 +1,228 @@
+{
+  "board": "edexcel",
+  "level": "e3",
+  "questions": [
+    {
+      "id": "e3-001", "topic": "n.read", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Write the number four hundred and seven in figures.",
+      "options": ["47", "470", "407", "4007"],
+      "answer": "407",
+      "workings": "Hundreds = 4, tens = 0, units = 7."
+    },
+    {
+      "id": "e3-002", "topic": "n.read", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which of these numbers is the largest?",
+      "options": ["304", "340", "403", "430"],
+      "answer": "430"
+    },
+    {
+      "id": "e3-003", "topic": "n.add", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "stem": "Work out 248 + 137",
+      "answer": "385"
+    },
+    {
+      "id": "e3-004", "topic": "n.add", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "stem": "Work out 605 - 178",
+      "answer": "427"
+    },
+    {
+      "id": "e3-005", "topic": "n.mult", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "stem": "Work out 7 ${times} 8",
+      "answer": "56"
+    },
+    {
+      "id": "e3-006", "topic": "n.mult", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "stem": "Work out 72 ${div} 8",
+      "answer": "9"
+    },
+    {
+      "id": "e3-007", "topic": "n.frac", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Sam eats half of a pizza. The pizza has 8 slices. How many slices does Sam eat?",
+      "options": ["2", "3", "4", "6"],
+      "answer": "4"
+    },
+    {
+      "id": "e3-008", "topic": "n.frac", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which fraction is the same as one quarter?",
+      "options": ["${frac:1/2}", "${frac:1/3}", "${frac:1/4}", "${frac:1/5}"],
+      "answer": "${frac:1/4}"
+    },
+    {
+      "id": "e3-009", "topic": "n.money", "strand": "number", "calc": false, "marks": 2, "type": "input-money",
+      "stem": "Amy buys a sandwich for £2.40 and a drink for £1.30. How much does she spend in total?",
+      "answer": "3.70",
+      "unit": "£"
+    },
+    {
+      "id": "e3-010", "topic": "n.money", "strand": "number", "calc": true, "marks": 2, "type": "input-money",
+      "stem": "Theo has a £10 note. He buys a magazine for £3.75 and a pen for £1.20. How much change does he get?",
+      "answer": "5.05",
+      "unit": "£"
+    },
+    {
+      "id": "e3-011", "topic": "n.dec", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "stem": "Work out 3.4 + 2.7",
+      "answer": "6.1"
+    },
+    {
+      "id": "e3-012", "topic": "n.dec", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which of these is the smallest?",
+      "options": ["0.3", "0.13", "0.31", "0.03"],
+      "answer": "0.03"
+    },
+    {
+      "id": "e3-013", "topic": "m.time", "strand": "measure", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "What time is shown? 14:35",
+      "options": ["2:35 am", "2:35 pm", "4:35 pm", "12:35 pm"],
+      "answer": "2:35 pm"
+    },
+    {
+      "id": "e3-014", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A film starts at 7:45 pm and lasts 1 hour 50 minutes. What time does it finish? Write your answer in 24-hour clock format (e.g. 21:35).",
+      "answer": "21:35"
+    },
+    {
+      "id": "e3-015", "topic": "m.length", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A piece of ribbon is 240 cm long. Jo cuts off 85 cm. How many cm of ribbon are left?",
+      "answer": "155",
+      "unit": "cm"
+    },
+    {
+      "id": "e3-016", "topic": "m.length", "strand": "measure", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which of these is the longest?",
+      "options": ["1 m", "50 cm", "120 cm", "85 cm"],
+      "answer": "120 cm"
+    },
+    {
+      "id": "e3-017", "topic": "m.weight", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A bag of flour weighs 2 kg. A baker uses 750 g. How many grams of flour are left? (1 kg = 1000 g)",
+      "answer": "1250",
+      "unit": "g"
+    },
+    {
+      "id": "e3-018", "topic": "m.capacity", "strand": "measure", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which container would hold about 1 litre of liquid?",
+      "options": ["A teaspoon", "A cup", "A large bottle of milk", "A swimming pool"],
+      "answer": "A large bottle of milk"
+    },
+    {
+      "id": "e3-019", "topic": "m.shape", "strand": "measure", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "How many sides does a hexagon have?",
+      "options": ["4", "5", "6", "8"],
+      "answer": "6"
+    },
+    {
+      "id": "e3-020", "topic": "m.shape", "strand": "measure", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which of these is a 3D shape?",
+      "options": ["Square", "Triangle", "Cube", "Circle"],
+      "answer": "Cube"
+    },
+    {
+      "id": "e3-021", "topic": "d.table", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "The table shows how many books each child read last month. How many books did Sara read?",
+      "table": [
+        ["Name", "Books"],
+        ["Ben", "5"],
+        ["Sara", "9"],
+        ["Tom", "4"],
+        ["Lila", "7"]
+      ],
+      "answer": "9"
+    },
+    {
+      "id": "e3-022", "topic": "d.table", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "Using the same table, how many books were read in total?",
+      "table": [
+        ["Name", "Books"],
+        ["Ben", "5"],
+        ["Sara", "9"],
+        ["Tom", "4"],
+        ["Lila", "7"]
+      ],
+      "answer": "25"
+    },
+    {
+      "id": "e3-023", "topic": "d.chart", "strand": "data", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "The bar chart shows favourite ice-cream flavours in a class. Which was the most popular?",
+      "chart": {
+        "type": "bar",
+        "labels": ["Vanilla", "Chocolate", "Mint", "Strawberry"],
+        "values": [4, 9, 3, 6]
+      },
+      "options": ["Vanilla", "Chocolate", "Mint", "Strawberry"],
+      "answer": "Chocolate"
+    },
+    {
+      "id": "e3-024", "topic": "n.money", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "A shop sells loaves of bread for £1.50 each. How much do 4 loaves cost?",
+      "answer": "6.00",
+      "unit": "£"
+    },
+    {
+      "id": "e3-025", "topic": "n.add", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "stem": "A bus has 38 passengers. At the next stop 14 get off and 9 get on. How many passengers are on the bus now?",
+      "answer": "33"
+    },
+    {
+      "id": "e3-026", "topic": "n.mult", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "stem": "A box holds 12 eggs. How many eggs are in 6 boxes?",
+      "answer": "72"
+    },
+    {
+      "id": "e3-027", "topic": "n.frac", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "stem": "There are 20 students in a class. ${frac:1/4} of them walk to school. How many students walk to school?",
+      "answer": "5"
+    },
+    {
+      "id": "e3-028", "topic": "m.money", "strand": "measure", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "Lisa works 5 hours and earns £9 per hour. How much does she earn in total?",
+      "answer": "45.00",
+      "unit": "£"
+    },
+    {
+      "id": "e3-029", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A train leaves at 09:20 and arrives at 11:05. How long is the journey, in minutes?",
+      "answer": "105",
+      "unit": "minutes"
+    },
+    {
+      "id": "e3-030", "topic": "m.length", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A football pitch is 100 m long and 60 m wide. What is the total distance around the pitch (the perimeter), in metres?",
+      "answer": "320",
+      "unit": "m"
+    },
+    {
+      "id": "e3-031", "topic": "n.dec", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "stem": "Round 3.78 to the nearest whole number.",
+      "answer": "4"
+    },
+    {
+      "id": "e3-032", "topic": "n.add", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which sign makes this correct?  56  ?  29 = 85",
+      "options": ["+", "-", "${times}", "${div}"],
+      "answer": "+"
+    },
+    {
+      "id": "e3-033", "topic": "d.chart", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "The bar chart shows pets owned by children in a class. How many children own dogs?",
+      "chart": {
+        "type": "bar",
+        "labels": ["Dog", "Cat", "Rabbit", "Fish"],
+        "values": [12, 8, 3, 5]
+      },
+      "answer": "12"
+    },
+    {
+      "id": "e3-034", "topic": "n.frac", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which is bigger?",
+      "options": ["${frac:1/2}", "${frac:1/4}"],
+      "answer": "${frac:1/2}"
+    },
+    {
+      "id": "e3-035", "topic": "n.money", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "Tom buys 3 chocolate bars at 65p each and a drink at £1.20. How much does he spend altogether?",
+      "answer": "3.15",
+      "unit": "£"
+    }
+  ]
+}

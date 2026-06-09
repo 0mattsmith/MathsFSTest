@@ -1,0 +1,257 @@
+{
+  "board": "edexcel",
+  "level": "l2",
+  "questions": [
+    {
+      "id": "l2-001", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 4.7 + 2.85",
+      "answer": "7.55"
+    },
+    {
+      "id": "l2-002", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 6 ${times} 0.45",
+      "answer": "2.7"
+    },
+    {
+      "id": "l2-003", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 12.6 ${div} 4",
+      "answer": "3.15"
+    },
+    {
+      "id": "l2-004", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 8 + 3${sq}",
+      "answer": "17"
+    },
+    {
+      "id": "l2-005", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out (5 + 7) ${times} 2 - 6",
+      "answer": "18"
+    },
+    {
+      "id": "l2-006", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out ${frac:2/3} ${times} ${frac:3/5}. Write your answer as a fraction in lowest terms (e.g. 2/5).",
+      "answer": "2/5"
+    },
+    {
+      "id": "l2-007", "topic": "n.frac", "strand": "number", "calc": false, "marks": 3, "type": "input",
+      "stem": "Work out ${frac:3/4} of 240",
+      "answer": "180"
+    },
+    {
+      "id": "l2-008", "topic": "n.pct", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 35% of 200",
+      "answer": "70"
+    },
+    {
+      "id": "l2-009", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "A coat is reduced by 30% in a sale. The original price was £85. What is the sale price?",
+      "answer": "59.50",
+      "unit": "£"
+    },
+    {
+      "id": "l2-010", "topic": "n.pct", "strand": "number", "calc": true, "marks": 4, "type": "input-money",
+      "stem": "After a 20% reduction, a TV costs £480. What was the original price?",
+      "answer": "600.00",
+      "unit": "£"
+    },
+    {
+      "id": "l2-011", "topic": "n.pct", "strand": "number", "calc": true, "marks": 4, "type": "input",
+      "stem": "An investment of £4 000 increases by 5% each year. What is its value after 2 years? Give answer to nearest £.",
+      "answer": "4410",
+      "unit": "£"
+    },
+    {
+      "id": "l2-012", "topic": "n.ratio", "strand": "number", "calc": false, "marks": 3, "type": "input",
+      "stem": "Share £180 in the ratio 5 : 4. The smaller share is £?",
+      "answer": "80"
+    },
+    {
+      "id": "l2-013", "topic": "n.ratio", "strand": "number", "calc": true, "marks": 4, "type": "input",
+      "stem": "A recipe for 6 people uses 480 g of pasta. How much pasta is needed for 10 people, in grams?",
+      "answer": "800",
+      "unit": "g"
+    },
+    {
+      "id": "l2-014", "topic": "n.ratio", "strand": "number", "calc": true, "marks": 4, "type": "input",
+      "stem": "5 workers can finish a job in 8 days. How many days would 4 workers take to do the same job? (Assume each works at the same rate.)",
+      "answer": "10",
+      "unit": "days"
+    },
+    {
+      "id": "l2-015", "topic": "n.indices", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "stem": "Work out 5${sq}",
+      "answer": "25"
+    },
+    {
+      "id": "l2-016", "topic": "n.indices", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 2${cu}",
+      "answer": "8"
+    },
+    {
+      "id": "l2-017", "topic": "n.approx", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Estimate 297 ${times} 4.1 by rounding both numbers to 1 significant figure.",
+      "answer": "1200"
+    },
+    {
+      "id": "l2-018", "topic": "m.compound", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "stem": "An L-shaped room is made by joining a 6 m by 4 m rectangle to a 3 m by 2 m rectangle. What is the total area, in m${sq}?",
+      "answer": "30",
+      "unit": "m²"
+    },
+    {
+      "id": "l2-019", "topic": "m.compound", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "stem": "A rectangular lawn is 10 m by 6 m. A square flower bed of side 2 m is removed from one corner. What is the area of the remaining lawn, in m${sq}?",
+      "answer": "56",
+      "unit": "m²"
+    },
+    {
+      "id": "l2-020", "topic": "m.circle", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "stem": "A circular pond has radius 3 m. What is its area, in m${sq}? Use ${pi} = 3.14 and give your answer to 1 decimal place.",
+      "answer": "28.3",
+      "tolerance": 0.2,
+      "unit": "m²"
+    },
+    {
+      "id": "l2-021", "topic": "m.circle", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "stem": "What is the circumference of a circle with diameter 14 cm? Use ${pi} = 3.14 and give your answer to 1 decimal place.",
+      "answer": "43.96",
+      "tolerance": 0.2,
+      "unit": "cm"
+    },
+    {
+      "id": "l2-022", "topic": "m.volume", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "stem": "A cylindrical water tank has radius 0.5 m and height 1.2 m. What is its volume, in m${cu}? Use ${pi} = 3.14 and give to 2 d.p.",
+      "answer": "0.94",
+      "tolerance": 0.05,
+      "unit": "m³"
+    },
+    {
+      "id": "l2-023", "topic": "m.units", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "Convert 5 km to metres.",
+      "answer": "5000",
+      "unit": "m"
+    },
+    {
+      "id": "l2-024", "topic": "m.units", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "stem": "1 inch is approximately 2.54 cm. Convert 8 inches to cm.",
+      "answer": "20.32",
+      "tolerance": 0.05,
+      "unit": "cm"
+    },
+    {
+      "id": "l2-025", "topic": "m.scale", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "stem": "A map has scale 1 : 50 000. A road is 8 cm long on the map. How many kilometres is this in real life?",
+      "answer": "4",
+      "unit": "km"
+    },
+    {
+      "id": "l2-026", "topic": "m.money", "strand": "measure", "calc": true, "marks": 4, "type": "input-money",
+      "stem": "Annual car insurance is £648. Pay-monthly is £62 per month for 12 months. How much cheaper is paying upfront?",
+      "answer": "96.00",
+      "unit": "£"
+    },
+    {
+      "id": "l2-027", "topic": "m.money", "strand": "measure", "calc": true, "marks": 4, "type": "input-money",
+      "stem": "Petrol costs £1.45 per litre. A car uses 8 litres per 100 km. How much does it cost to drive 250 km? Give answer to the nearest penny.",
+      "answer": "29.00",
+      "unit": "£"
+    },
+    {
+      "id": "l2-028", "topic": "d.freq", "strand": "data", "calc": true, "marks": 4, "type": "input",
+      "stem": "The frequency table shows hours of TV watched per day. Calculate the mean number of hours (to 1 d.p.).",
+      "table": [
+        ["Hours", "Frequency"],
+        ["1", "4"],
+        ["2", "7"],
+        ["3", "6"],
+        ["4", "3"]
+      ],
+      "answer": "2.4",
+      "tolerance": 0.1,
+      "unit": "hours"
+    },
+    {
+      "id": "l2-029", "topic": "d.freq", "strand": "data", "calc": true, "marks": 3, "type": "input",
+      "stem": "Using the same TV-hours frequency table, what is the modal class (the most common value)?",
+      "table": [
+        ["Hours", "Frequency"],
+        ["1", "4"],
+        ["2", "7"],
+        ["3", "6"],
+        ["4", "3"]
+      ],
+      "answer": "2"
+    },
+    {
+      "id": "l2-030", "topic": "d.avg", "strand": "data", "calc": true, "marks": 3, "type": "input",
+      "stem": "Find the median of: 14, 22, 9, 17, 25, 11, 18",
+      "answer": "17"
+    },
+    {
+      "id": "l2-031", "topic": "d.scatter", "strand": "data", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "A scatter graph shows hours studied (x) against test marks (y). The points slope up to the right. What kind of correlation does this show?",
+      "options": ["No correlation", "Positive correlation", "Negative correlation", "Curved"],
+      "answer": "Positive correlation"
+    },
+    {
+      "id": "l2-032", "topic": "d.prob", "strand": "data", "calc": true, "marks": 3, "type": "input",
+      "stem": "A fair six-sided dice is rolled twice. What is the probability of getting a 6 both times? Write as a fraction in lowest terms (e.g. 1/36).",
+      "answer": "1/36"
+    },
+    {
+      "id": "l2-033", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "A bag has 4 red and 6 blue counters. One is taken at random. What is the probability it is red? Write as a fraction in lowest terms.",
+      "answer": "2/5"
+    },
+    {
+      "id": "l2-034", "topic": "n.pct", "strand": "number", "calc": true, "marks": 4, "type": "input",
+      "stem": "House prices rose from £210 000 to £241 500 in one year. What is the percentage increase? (give to 1 d.p.)",
+      "answer": "15",
+      "tolerance": 0.1,
+      "unit": "%"
+    },
+    {
+      "id": "l2-035", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out ${frac:2/5} + ${frac:1/4}. Write as a fraction (e.g. 13/20).",
+      "answer": "13/20"
+    },
+    {
+      "id": "l2-036", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which of these is the largest?",
+      "options": ["0.45", "0.405", "0.5", "0.54"],
+      "answer": "0.54"
+    },
+    {
+      "id": "l2-037", "topic": "m.compound", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "stem": "Calculate the perimeter of a rectangle that is 7.5 m long and 4.2 m wide. Give answer to 1 d.p., in metres.",
+      "answer": "23.4",
+      "unit": "m"
+    },
+    {
+      "id": "l2-038", "topic": "d.charts", "strand": "data", "calc": true, "marks": 3, "type": "input",
+      "stem": "The bar chart shows test scores out of 20 for 4 students. What is the mean score?",
+      "chart": {
+        "type": "bar",
+        "labels": ["A", "B", "C", "D"],
+        "values": [14, 18, 12, 16]
+      },
+      "answer": "15"
+    },
+    {
+      "id": "l2-039", "topic": "d.charts", "strand": "data", "calc": true, "marks": 3, "type": "input",
+      "stem": "Using the same chart, what is the range of the scores?",
+      "chart": {
+        "type": "bar",
+        "labels": ["A", "B", "C", "D"],
+        "values": [14, 18, 12, 16]
+      },
+      "answer": "6"
+    },
+    {
+      "id": "l2-040", "topic": "m.money", "strand": "measure", "calc": true, "marks": 5, "type": "input-money",
+      "stem": "Carla earns £24 600 per year. She pays 20% income tax on earnings above the personal allowance of £12 570. How much income tax does she pay per year?",
+      "answer": "2406.00",
+      "unit": "£"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maths FS Revision</title>
+  <link rel="stylesheet" href="src/renderer/styles/main.css" />
+  <link rel="stylesheet" href="src/renderer/styles/print.css" media="print" />
+</head>
+<body>
+  <div id="player" class="player">
+    <div class="player-titlebar">
+      <span class="tb-dot tb-dot-r"></span>
+      <span class="tb-dot tb-dot-y"></span>
+      <span class="tb-dot tb-dot-g"></span>
+      <span class="tb-title">Test Player Preview &mdash; Maths FS</span>
+      <span class="tb-spacer"></span>
+      <span class="tb-board" id="tb-board-label">Edexcel</span>
+      <span class="tb-ctl tb-min">&minus;</span>
+      <span class="tb-ctl tb-max">&#9633;</span>
+      <span class="tb-ctl tb-close">&times;</span>
+    </div>
+
+    <div id="screen" class="screen"></div>
+
+    <div id="footerbar" class="footerbar hide">
+      <div class="fb-left">
+        <button class="fb-icon" id="fb-calc" title="Calculator (Section B only)" aria-label="Calculator">&#9635;</button>
+        <button class="fb-icon" id="fb-help" title="Help" aria-label="Help">?</button>
+        <button class="fb-icon" id="fb-flag" title="Flag this question" aria-label="Flag">&#9873;</button>
+      </div>
+      <div class="fb-center">
+        <button id="btn-prev" class="orange-btn">&#9664; Previous</button>
+        <span id="page-counter" class="page-counter">&nbsp;</span>
+        <button id="btn-next" class="orange-btn">Next &#9654;</button>
+        <span id="timer" class="timer"><span class="hourglass">&#8987;</span><span id="timer-text">00:00</span></span>
+      </div>
+      <div class="fb-right">
+        <button id="btn-marks" class="orange-btn">Marks</button>
+        <button id="btn-save" class="orange-btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="calc-pane" class="calc-pane hide" aria-hidden="true">
+    <div class="calc-handle">Calculator</div>
+    <div class="calc-display" id="calc-display">0</div>
+    <div class="calc-keys" id="calc-keys"></div>
+  </div>
+
+  <script type="module" src="src/renderer/app.js"></script>
+</body>
+</html>

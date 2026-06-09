@@ -1,0 +1,42 @@
+{
+  "name": "maths-fs-revision",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Maths Functional Skills revision app — practice papers, revision games and progress tracking for Edexcel Entry Level 3, Level 1 and Level 2. Runs in any modern browser (Chromebook-friendly) and as an optional Electron desktop app.",
+  "main": "src/main/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node smoke.test.mjs",
+    "electron": "electron .",
+    "build:win": "electron-builder --win --x64",
+    "build:win-portable": "electron-builder --win portable --x64",
+    "build:mac": "electron-builder --mac --x64 --arm64"
+  },
+  "devDependencies": {
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.mathsfs.revision",
+    "productName": "Maths FS Revision",
+    "directories": { "output": "dist" },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json",
+      "!**/.DS_Store"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [{ "target": "dmg", "arch": ["x64", "arm64"] }]
+    }
+  },
+  "license": "UNLICENSED"
+}

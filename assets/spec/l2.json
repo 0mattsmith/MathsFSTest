@@ -1,0 +1,77 @@
+{
+  "level": "l2",
+  "board": "edexcel",
+  "title": "Pearson Edexcel Functional Skills Mathematics",
+  "levelLabel": "Level 2",
+  "code": "FSM06",
+  "paperCode": "FSM06/01",
+  "totalMarks": 65,
+  "passMark": 33,
+  "sections": [
+    {
+      "id": "A",
+      "name": "Section A",
+      "subname": "Non-calculator",
+      "minutes": 25,
+      "marks": 16,
+      "calc": false,
+      "questionCount": 7,
+      "topicWeights": {
+        "number": 0.7,
+        "measure": 0.2,
+        "data": 0.1
+      }
+    },
+    {
+      "id": "B",
+      "name": "Section B",
+      "subname": "Calculator",
+      "minutes": 90,
+      "marks": 49,
+      "calc": true,
+      "questionCount": 14,
+      "topicWeights": {
+        "number": 0.3,
+        "measure": 0.35,
+        "data": 0.35
+      }
+    }
+  ],
+  "instructions": [
+    "Use black ink or ball-point pen.",
+    "Fill in the boxes at the top of the page with your name, centre number and candidate number.",
+    "Answer ALL questions.",
+    "Answer the questions in the spaces provided — there may be more space than you need.",
+    "You may NOT use a calculator in Section A.",
+    "You may use a calculator in Section B.",
+    "You must show all your working."
+  ],
+  "information": [
+    "The total mark for this paper is 65.",
+    "Section A is worth 16 marks; Section B is worth 49 marks.",
+    "The marks for each question are shown in brackets — use this as a guide as to how much time to spend on each question.",
+    "Read each question carefully before you start to answer it.",
+    "Try to answer every question.",
+    "Check your answers if you have time at the end."
+  ],
+  "topics": [
+    { "id": "n.fourop",   "name": "Four operations (dec/frac)",      "strand": "number" },
+    { "id": "n.bidmas",   "name": "BIDMAS",                          "strand": "number" },
+    { "id": "n.frac",     "name": "Fractions (all four ops)",        "strand": "number" },
+    { "id": "n.pct",      "name": "Percentages (incl. reverse)",     "strand": "number" },
+    { "id": "n.ratio",    "name": "Ratio & direct proportion",       "strand": "number" },
+    { "id": "n.indices",  "name": "Indices & powers",                "strand": "number" },
+    { "id": "n.approx",   "name": "Approximation & estimation",      "strand": "number" },
+    { "id": "m.compound", "name": "Compound shape area/perimeter",   "strand": "measure" },
+    { "id": "m.volume",   "name": "Volume incl. cylinders",          "strand": "measure" },
+    { "id": "m.circle",   "name": "Circles",                          "strand": "measure" },
+    { "id": "m.units",    "name": "Metric & imperial conversions",   "strand": "measure" },
+    { "id": "m.scale",    "name": "Scale & bearings",                 "strand": "measure" },
+    { "id": "m.money",    "name": "Money / best buy",                 "strand": "measure" },
+    { "id": "d.charts",   "name": "Bar/line/pie charts",              "strand": "data" },
+    { "id": "d.freq",     "name": "Frequency tables",                 "strand": "data" },
+    { "id": "d.scatter",  "name": "Scatter graphs & correlation",     "strand": "data" },
+    { "id": "d.avg",      "name": "Averages from grouped data",       "strand": "data" },
+    { "id": "d.prob",     "name": "Probability (independent events)", "strand": "data" }
+  ]
+}

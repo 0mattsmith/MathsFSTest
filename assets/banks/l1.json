@@ -1,0 +1,268 @@
+{
+  "board": "edexcel",
+  "level": "l1",
+  "questions": [
+    {
+      "id": "l1-001", "topic": "n.order", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Round 4 287 to the nearest hundred.",
+      "options": ["4 200", "4 280", "4 290", "4 300"],
+      "answer": "4 300"
+    },
+    {
+      "id": "l1-002", "topic": "n.order", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Write these numbers in order, smallest first: 0.6, 0.35, 0.402, 0.06. Type the smallest one.",
+      "answer": "0.06"
+    },
+    {
+      "id": "l1-003", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 348 + 567",
+      "answer": "915"
+    },
+    {
+      "id": "l1-004", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 1 204 - 386",
+      "answer": "818"
+    },
+    {
+      "id": "l1-005", "topic": "n.fourop", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 23 ${times} 14",
+      "answer": "322"
+    },
+    {
+      "id": "l1-006", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 6 + 4 ${times} 3",
+      "answer": "18"
+    },
+    {
+      "id": "l1-007", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out (12 + 8) ${div} 4",
+      "answer": "5"
+    },
+    {
+      "id": "l1-008", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out ${frac:3/4} of 60",
+      "answer": "45"
+    },
+    {
+      "id": "l1-009", "topic": "n.frac", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Which fraction is equivalent to 0.25?",
+      "options": ["${frac:1/2}", "${frac:1/4}", "${frac:1/3}", "${frac:3/4}"],
+      "answer": "${frac:1/4}"
+    },
+    {
+      "id": "l1-010", "topic": "n.pct", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 50% of 80",
+      "answer": "40"
+    },
+    {
+      "id": "l1-011", "topic": "n.pct", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 25% of 120",
+      "answer": "30"
+    },
+    {
+      "id": "l1-012", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "A jacket costs £80. In a sale it is reduced by 15%. What is the sale price?",
+      "answer": "68.00",
+      "unit": "£"
+    },
+    {
+      "id": "l1-013", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input",
+      "stem": "Lola scored 42 out of 60 on a test. What percentage is this?",
+      "answer": "70",
+      "unit": "%"
+    },
+    {
+      "id": "l1-014", "topic": "n.dec", "strand": "number", "calc": false, "marks": 1, "type": "input",
+      "stem": "Work out 3.6 + 0.85",
+      "answer": "4.45"
+    },
+    {
+      "id": "l1-015", "topic": "n.dec", "strand": "number", "calc": true, "marks": 2, "type": "input",
+      "stem": "Work out 12.4 ${times} 5",
+      "answer": "62"
+    },
+    {
+      "id": "l1-016", "topic": "n.ratio", "strand": "number", "calc": true, "marks": 3, "type": "input",
+      "stem": "A recipe for 8 cookies uses 200 g of flour. How much flour is needed for 12 cookies?",
+      "answer": "300",
+      "unit": "g"
+    },
+    {
+      "id": "l1-017", "topic": "n.ratio", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Share £60 in the ratio 2 : 3. The smaller share is £?",
+      "answer": "24"
+    },
+    {
+      "id": "l1-018", "topic": "n.approx", "strand": "number", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "Round 4 387 to the nearest 1 000.",
+      "options": ["4 000", "4 300", "4 400", "5 000"],
+      "answer": "4 000"
+    },
+    {
+      "id": "l1-019", "topic": "m.money", "strand": "measure", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "Phone contract A costs £18 per month for 24 months. Phone contract B costs £450 to pay upfront. How much would you save over 2 years by choosing the cheaper one?",
+      "answer": "18.00",
+      "unit": "£"
+    },
+    {
+      "id": "l1-020", "topic": "m.money", "strand": "measure", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "Tom earns £9.50 per hour and works 32 hours one week. How much does he earn before tax?",
+      "answer": "304.00",
+      "unit": "£"
+    },
+    {
+      "id": "l1-021", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A train leaves London at 08:42 and arrives in Manchester at 11:15. How many minutes does the journey take?",
+      "answer": "153",
+      "unit": "minutes"
+    },
+    {
+      "id": "l1-022", "topic": "m.peri", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A rectangular garden is 8 m long and 5 m wide. What is its perimeter, in metres?",
+      "answer": "26",
+      "unit": "m"
+    },
+    {
+      "id": "l1-023", "topic": "m.area", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "A rectangular kitchen floor is 4.5 m by 3 m. What is its area, in m${sq}?",
+      "answer": "13.5",
+      "unit": "m²"
+    },
+    {
+      "id": "l1-024", "topic": "m.volume", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "stem": "A cuboid box measures 10 cm by 6 cm by 4 cm. What is its volume, in cm${cu}?",
+      "answer": "240",
+      "unit": "cm³"
+    },
+    {
+      "id": "l1-025", "topic": "m.units", "strand": "measure", "calc": false, "marks": 1, "type": "input",
+      "stem": "How many millimetres are there in 4.6 cm?",
+      "answer": "46",
+      "unit": "mm"
+    },
+    {
+      "id": "l1-026", "topic": "m.units", "strand": "measure", "calc": true, "marks": 2, "type": "input",
+      "stem": "Convert 2.4 kg into grams.",
+      "answer": "2400",
+      "unit": "g"
+    },
+    {
+      "id": "l1-027", "topic": "m.scale", "strand": "measure", "calc": true, "marks": 3, "type": "input",
+      "stem": "On a map, 1 cm represents 5 km. Two towns are 12 cm apart on the map. How far apart are they in real life?",
+      "answer": "60",
+      "unit": "km"
+    },
+    {
+      "id": "l1-028", "topic": "d.tables", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "The table shows the cost of a coach trip. How much does it cost for 2 adults and 3 children?",
+      "table": [
+        ["Ticket", "Price"],
+        ["Adult", "£12.50"],
+        ["Child", "£7.50"]
+      ],
+      "answer": "47.50",
+      "unit": "£"
+    },
+    {
+      "id": "l1-029", "topic": "d.charts", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "The bar chart shows weekly bike sales. How many bikes were sold in Week 3?",
+      "chart": {
+        "type": "bar",
+        "labels": ["Week 1", "Week 2", "Week 3", "Week 4"],
+        "values": [18, 25, 31, 22]
+      },
+      "answer": "31"
+    },
+    {
+      "id": "l1-030", "topic": "d.charts", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "Using the bike sales chart, how many bikes were sold across all 4 weeks?",
+      "chart": {
+        "type": "bar",
+        "labels": ["Week 1", "Week 2", "Week 3", "Week 4"],
+        "values": [18, 25, 31, 22]
+      },
+      "answer": "96"
+    },
+    {
+      "id": "l1-031", "topic": "d.avg", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "Find the mean of: 8, 6, 10, 4, 12",
+      "answer": "8"
+    },
+    {
+      "id": "l1-032", "topic": "d.avg", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "Find the range of: 12, 7, 15, 4, 9",
+      "answer": "11"
+    },
+    {
+      "id": "l1-033", "topic": "d.avg", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "Find the median of: 5, 9, 2, 7, 11, 3, 8",
+      "answer": "7"
+    },
+    {
+      "id": "l1-034", "topic": "d.avg", "strand": "data", "calc": false, "marks": 1, "type": "input",
+      "stem": "What is the mode of: 4, 7, 2, 7, 5, 7, 9?",
+      "answer": "7"
+    },
+    {
+      "id": "l1-035", "topic": "d.prob", "strand": "data", "calc": false, "marks": 1, "type": "mcq",
+      "stem": "A coin is fair. What is the probability of getting heads?",
+      "options": ["0", "${frac:1/4}", "${frac:1/2}", "1"],
+      "answer": "${frac:1/2}"
+    },
+    {
+      "id": "l1-036", "topic": "d.prob", "strand": "data", "calc": true, "marks": 2, "type": "input",
+      "stem": "A bag has 3 red, 2 blue and 5 green sweets. What is the probability of picking a red sweet, as a fraction in lowest terms (write like '3/10')?",
+      "answer": "3/10"
+    },
+    {
+      "id": "l1-037", "topic": "n.pct", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "A laptop costs £600 plus VAT at 20%. What is the total price?",
+      "answer": "720.00",
+      "unit": "£"
+    },
+    {
+      "id": "l1-038", "topic": "m.area", "strand": "measure", "calc": true, "marks": 4, "type": "input",
+      "stem": "A wall measures 4 m by 2.5 m. Paint covers 5 m${sq} per litre. How many litres of paint are needed for one coat (round up to the nearest whole litre)?",
+      "answer": "2",
+      "unit": "litres"
+    },
+    {
+      "id": "l1-039", "topic": "n.fourop", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
+      "stem": "A delivery driver drives 240 miles a week and is paid 45p per mile. How much is he paid for the week?",
+      "answer": "108.00",
+      "unit": "£"
+    },
+    {
+      "id": "l1-040", "topic": "n.ratio", "strand": "number", "calc": true, "marks": 3, "type": "input",
+      "stem": "Concrete mix uses sand and cement in the ratio 4 : 1. A builder uses 25 kg of cement. How many kg of sand are needed?",
+      "answer": "100",
+      "unit": "kg"
+    },
+    {
+      "id": "l1-041", "topic": "d.charts", "strand": "data", "calc": true, "marks": 3, "type": "mcq",
+      "stem": "Look at the chart of monthly rainfall. Which month had the lowest rainfall?",
+      "chart": {
+        "type": "bar",
+        "labels": ["Jan", "Feb", "Mar", "Apr"],
+        "values": [85, 72, 40, 60]
+      },
+      "options": ["Jan", "Feb", "Mar", "Apr"],
+      "answer": "Mar"
+    },
+    {
+      "id": "l1-042", "topic": "m.money", "strand": "measure", "calc": true, "marks": 4, "type": "input-money",
+      "stem": "Pack of 12 cans: £4.20. Pack of 8 cans: £3.20. Which is cheaper per can — and what is the cost per can of the cheaper pack? Enter cost per can in pence (no symbol).",
+      "answer": "35"
+    },
+    {
+      "id": "l1-043", "topic": "n.bidmas", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Work out 20 - 3 ${times} 4",
+      "answer": "8"
+    },
+    {
+      "id": "l1-044", "topic": "n.frac", "strand": "number", "calc": false, "marks": 2, "type": "input",
+      "stem": "Add ${frac:1/4} + ${frac:1/2}. Write the answer as a fraction in the form a/b.",
+      "answer": "3/4"
+    }
+  ]
+}

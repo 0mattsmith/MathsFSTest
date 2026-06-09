@@ -1,0 +1,71 @@
+{
+  "level": "e3",
+  "board": "edexcel",
+  "title": "Pearson Edexcel Functional Skills Mathematics",
+  "levelLabel": "Entry Level 3",
+  "code": "FSM01",
+  "paperCode": "FSM01/01",
+  "totalMarks": 30,
+  "passMark": 23,
+  "sections": [
+    {
+      "id": "A",
+      "name": "Section A",
+      "subname": "Non-calculator",
+      "minutes": 15,
+      "marks": 7,
+      "calc": false,
+      "questionCount": 4,
+      "topicWeights": {
+        "number": 0.7,
+        "measure": 0.2,
+        "data": 0.1
+      }
+    },
+    {
+      "id": "B",
+      "name": "Section B",
+      "subname": "Calculator",
+      "minutes": 60,
+      "marks": 23,
+      "calc": true,
+      "questionCount": 8,
+      "topicWeights": {
+        "number": 0.4,
+        "measure": 0.4,
+        "data": 0.2
+      }
+    }
+  ],
+  "instructions": [
+    "Use black ink or ball-point pen.",
+    "Fill in the boxes at the top of the page with your name, centre number and candidate number.",
+    "Answer ALL questions.",
+    "Answer the questions in the spaces provided — there may be more space than you need.",
+    "You may NOT use a calculator in Section A.",
+    "You may use a calculator in Section B."
+  ],
+  "information": [
+    "The total mark for this paper is 30.",
+    "The marks for each question are shown in brackets — use this as a guide as to how much time to spend on each question.",
+    "Read each question carefully before you start to answer it.",
+    "Try to answer every question.",
+    "Check your answers if you have time at the end."
+  ],
+  "topics": [
+    { "id": "n.read", "name": "Read & write numbers", "strand": "number" },
+    { "id": "n.add", "name": "Add and subtract", "strand": "number" },
+    { "id": "n.mult", "name": "Multiply and divide", "strand": "number" },
+    { "id": "n.frac", "name": "Simple fractions", "strand": "number" },
+    { "id": "n.dec", "name": "Decimals to 2dp", "strand": "number" },
+    { "id": "n.money", "name": "Money", "strand": "number" },
+    { "id": "m.money", "name": "Money in real-life", "strand": "measure" },
+    { "id": "m.time", "name": "Time", "strand": "measure" },
+    { "id": "m.length", "name": "Length", "strand": "measure" },
+    { "id": "m.weight", "name": "Weight", "strand": "measure" },
+    { "id": "m.capacity", "name": "Capacity", "strand": "measure" },
+    { "id": "m.shape", "name": "2D & 3D shapes", "strand": "measure" },
+    { "id": "d.table", "name": "Tables", "strand": "data" },
+    { "id": "d.chart", "name": "Simple charts", "strand": "data" }
+  ]
+}
