@@ -145,7 +145,8 @@
         { "name": "ing",     "type": "pick", "from": ["flour","sugar","butter","oats","rice"] },
         { "name": "people1", "type": "int", "min": 4, "max": 8 },
         { "name": "amt1",    "type": "int", "min": 200, "max": 600, "step": 50 },
-        { "name": "people2", "type": "int", "min": 6, "max": 18 }
+        { "name": "extra",   "type": "int", "min": 3, "max": 10 },
+        { "name": "people2", "type": "expr", "expr": "people1 + extra" }
       ],
       "stem": "A recipe for {{people1}} people uses {{amt1}} g of {{ing}}. How much {{ing}} is needed for {{people2}} people, in grams?",
       "answer": "{{Math.round(amt1 * people2 / people1)}}",
@@ -211,13 +212,13 @@
     {
       "id": "l1-tpl-mean", "topic": "d.avg", "strand": "data", "calc": true, "marks": 2, "type": "input",
       "params": [
-        { "name": "n",   "type": "pick", "from": [4, 5, 6] },
-        { "name": "avg", "type": "int", "min": 5, "max": 14 },
-        { "name": "d1",  "type": "int", "min": -3, "max": 3 },
-        { "name": "d2",  "type": "int", "min": -4, "max": 4 },
-        { "name": "d3",  "type": "int", "min": -4, "max": 4 }
+        { "name": "avg", "type": "int", "min": 6, "max": 14 },
+        { "name": "d1",  "type": "int", "min": 1, "max": 4 },
+        { "name": "d2",  "type": "int", "min": 1, "max": 5 },
+        { "name": "d3",  "type": "int", "min": 1, "max": 4 },
+        { "name": "d4",  "type": "int", "min": 1, "max": 5 }
       ],
-      "stem": "Find the mean of these {{n}} numbers: {{avg + d1}}, {{avg + d2}}, {{avg - d1 - d2 + (n - 3) * 0}}, {{avg - d3}}, {{n > 4 ? (avg + d3) + ',' : ''}}{{n > 5 ? ' ' + avg + ',' : ''}} {{avg}}",
+      "stem": "Find the mean of: {{avg + d1}}, {{avg - d4}}, {{avg + d2 + d4 - d1 - d3}}, {{avg + d3}}, {{avg - d2}}",
       "answer": "{{avg}}"
     },
     {
@@ -276,7 +277,7 @@
     {
       "id": "l1-tpl-delivery-mileage", "topic": "n.fourop", "strand": "number", "calc": true, "marks": 3, "type": "input-money",
       "params": [
-        { "name": "miles", "type": "int", "min": 80, "max": 320, "step": 10 },
+        { "name": "miles", "type": "int", "min": 105, "max": 325, "step": 10 },
         { "name": "pence", "type": "int", "min": 30, "max": 55, "step": 5 }
       ],
       "stem": "A delivery driver drives {{miles}} miles a week and is paid {{pence}}p per mile. How much is he paid for the week?",

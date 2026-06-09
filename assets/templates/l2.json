@@ -181,7 +181,7 @@
     {
       "id": "l2-tpl-map-scale", "topic": "m.scale", "strand": "measure", "calc": true, "marks": 3, "type": "input",
       "params": [
-        { "name": "denom", "type": "pick", "from": [25000, 50000, 100000] },
+        { "name": "denom", "type": "pick", "from": [25000, 50000, 200000] },
         { "name": "cm", "type": "int", "min": 4, "max": 18 }
       ],
       "stem": "A map has scale 1 : {{denom}}. A road is {{cm}} cm long on the map. How many kilometres is this in real life?",
@@ -256,8 +256,9 @@
     {
       "id": "l2-tpl-frac-of", "topic": "n.frac", "strand": "number", "calc": false, "marks": 3, "type": "input",
       "params": [
-        { "name": "denom", "type": "pick", "from": [3, 4, 5, 6, 8] },
-        { "name": "num",   "type": "int", "min": 1, "max": 5 },
+        { "name": "num",   "type": "int", "min": 2, "max": 4 },
+        { "name": "extra", "type": "int", "min": 1, "max": 5 },
+        { "name": "denom", "type": "expr", "expr": "num + extra" },
         { "name": "base",  "type": "int", "min": 4, "max": 20 }
       ],
       "stem": "Work out {{num}}/{{denom}} of {{base * denom}}",

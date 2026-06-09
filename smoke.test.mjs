@@ -327,28 +327,42 @@ for (const lv of LEVELS) {
 function answerLeaksIntoStem(stem, answer) {
   if (!answer || typeof answer !== 'string') return false;
   const a = answer.trim();
-  if (a.length < 3) return false;
+  if (a.length < 2) return false;
   // Compound-format answer: time, fraction, money. These almost never
   // appear in a stem by chance, so a substring hit is a real leak.
   const isCompound = /[:/]/.test(a) || /^£/.test(a);
-  if (!isCompound) return false;
-  return stem.includes(a);
+  if (isCompound) return stem.includes(a);
+  // Integer answer: flag if the exact integer appears as a stand-alone
+  // token in the stem. Excludes 1-digit answers (too noisy — digits 1-9
+  // appear in stems incidentally all the time). Caught the original
+  // e3-tpl-time-duration ("arrives 70 minutes later" with answer 70).
+  if (/^-?\d{2,}$/.test(a)) {
+    const re = new RegExp('(^|[^\\d.])' + a + '(?!\\d)');
+    return re.test(stem);
+  }
+  return false;
 }
+
+// Topics where the answer is naturally one of the data points (median,
+// mode, modal class) — exclude them from the integer-leak check.
+const DATA_TOPICS_WITH_NATURAL_LEAK = new Set(['d.avg', 'd.freq', 'd.tables']);
 for (const lv of LEVELS) {
   // Static questions
   for (const q of banks[lv].questions) {
-    if (q.type === 'mcq') continue;  // MCQ options are supposed to include the answer
-    ok(`${lv}/${q.id}: stem does not leak compound answer`,
+    if (q.type === 'mcq') continue;
+    if (DATA_TOPICS_WITH_NATURAL_LEAK.has(q.topic)) continue;
+    ok(`${lv}/${q.id}: stem does not leak answer`,
        !answerLeaksIntoStem(q.stem || '', String(q.answer || '')),
        'stem: "' + (q.stem || '').slice(0, 80) + '..." answer: ' + q.answer);
   }
   // Templated questions, expanded with 5 seeds each
   for (const tpl of (tplPacks[lv].templates || [])) {
+    if (DATA_TOPICS_WITH_NATURAL_LEAK.has(tpl.topic)) continue;
     for (const seed of ['LEAK1','LEAK2','LEAK3','LEAK4','LEAK5']) {
       let q;
       try { q = tplExpand(tpl, seed); } catch { continue; }
       if (q.type === 'mcq') continue;
-      ok(`${lv}/${tpl.id} @ ${seed}: stem does not leak compound answer`,
+      ok(`${lv}/${tpl.id} @ ${seed}: stem does not leak answer`,
          !answerLeaksIntoStem(q.stem, q.answer),
          'stem: "' + q.stem.slice(0, 80) + '..." answer: ' + q.answer);
     }

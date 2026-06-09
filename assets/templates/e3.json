@@ -173,9 +173,10 @@
       "id": "e3-tpl-time-duration", "topic": "m.time", "strand": "measure", "calc": true, "marks": 2, "type": "input",
       "params": [
         { "name": "startMin", "type": "int", "min": 540, "max": 750, "step": 5 },
-        { "name": "dur",      "type": "int", "min": 35, "max": 165, "step": 5 }
+        { "name": "dur",      "type": "int", "min": 35, "max": 165, "step": 5 },
+        { "name": "endMin",   "type": "expr", "expr": "startMin + dur" }
       ],
-      "stem": "A train leaves at {{Math.floor(startMin/60)}}:{{startMin - Math.floor(startMin/60)*60 < 10 ? '0' + (startMin - Math.floor(startMin/60)*60) : (startMin - Math.floor(startMin/60)*60)}} and arrives {{dur}} minutes later. How many minutes is the journey?",
+      "stem": "A train leaves at {{Math.floor(startMin/60)}}:{{startMin%60 < 10 ? '0' + (startMin%60) : (startMin%60)}} and arrives at {{Math.floor(endMin/60)}}:{{endMin%60 < 10 ? '0' + (endMin%60) : (endMin%60)}}. How many minutes is the journey?",
       "answer": "{{dur}}",
       "unit": "minutes"
     },
