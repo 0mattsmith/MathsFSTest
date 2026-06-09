@@ -67,6 +67,11 @@ export function showHome(api, state) {
         startedAt: new Date().toISOString(),
         mode: 'mock',
       };
+      // Clear any answers carried over from the previous attempt. Static
+      // questions reuse the same id across seeds (e3-004 etc.), so without
+      // this the previous attempt's answer would pre-fill the input.
+      state.responses = {};
+      state.attempt = null;
     }
     if (r === 'print') {
       state.test = {
